@@ -25,11 +25,33 @@
             padding: 0;
             background-color: #000000;
         }
+        
+        .head {
+            display: flex;
+            float: right;
+            flex-direction: row;
+            margin-top: 10px;
+        }
+        
+        .head .headline {
+            margin: 0px 10px;
+        }
     </style>
 </head>
 
 <body>
-    <div id="jsi-particle-container" class="container"></div>
+    <div class="head">
+        <div class="headline">首页</div>
+        <div class="headline">企业使命</div>
+        <div class="headline">川仁文化</div>
+        <div class="headline">品牌运营</div>
+        <div class="headline">川仁新闻</div>
+        <div class="headline">合作联系</div>
+    </div>
+
+    <div id="jsi-particle-container" class="container" style="display: none"></div>
+
+
 </body>
 <script>
     var RENDERER = {
