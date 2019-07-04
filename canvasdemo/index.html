@@ -18,12 +18,21 @@
             overflow: hidden;
         }
         
+        .boxbody {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+        }
+        
         .container {
-            width: 100％;
+            width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #000000;
+            background-color: #fff;
         }
         
         .head {
@@ -36,26 +45,95 @@
         .head .headline {
             margin: 0px 10px;
         }
+        
+        .shouye {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 40%;
+            left: 0px;
+            flex-direction: row;
+            width: 100%;
+        }
+        
+        .shouye .shouyeitem {
+            width: 310px;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+        
+        .shouye .shouyeitem .title {
+            font-size: 24px;
+        }
+        
+        .shouye .shouyeitem .miaosu {
+            font-size: 14px;
+        }
+        
+        .shouye .shouyeitem .lookbutton {
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            border: 1px solid #000;
+        }
     </style>
 </head>
 
 <body>
     <div class="head">
-        <div class="headline">首页</div>
+        <div class="headline" onclick="shouye()">首页</div>
         <div class="headline">企业使命</div>
         <div class="headline">川仁文化</div>
         <div class="headline">品牌运营</div>
         <div class="headline">川仁新闻</div>
         <div class="headline">合作联系</div>
     </div>
+    <div class="boxbody">
 
-    <div id="jsi-particle-container" class="container" style="display: none"></div>
+        <div class="shouye">
+            <div class="shouyeitem">
+                <div class="title">企业使命</div>
+                <div class="miaosu">
+                    <p>企业使命企业使命</p>
+                </div>
+                <div class="lookbutton">
+                    查看详情
+                </div>
+            </div>
+            <div class="shouyeitem">
+                <div class="title">企业文化</div>
+                <div class="miaosu">
+                    <p>企业使命企业使命</p>
+                </div>
+                <div class="lookbutton">
+                    查看详情
+                </div>
+            </div>
+            <div class="shouyeitem">
+                <div class="title">品牌运营</div>
+                <div class="miaosu">
+                    <p>企业使命企业使命</p>
+                </div>
+                <div class="lookbutton">
+                    查看详情
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="jsi-particle-container" class="container"></div>
 
 
 </body>
 <script>
+    function shouye() {
+        var newCanvas = $('<canvas />').get(0).getContext("2d");
+        newCanvas.scale(2, 2);
+    }
     var RENDERER = {
-        PARTICLE_COUNT: 100,
+        PARTICLE_COUNT: 1000,
         PARTICLE_RADIUS: 1,
         MAX_ROTATION_ANGLE: Math.PI / 60,
         TRANSLATION_COUNT: 5000,
@@ -86,8 +164,17 @@
                 y: this.height / 2
             };
 
-            this.rotationX = this.MAX_ROTATION_ANGLE;
-            this.rotationY = this.MAX_ROTATION_ANGLE;
+            // this.rotationX = this.MAX_ROTATION_ANGLE;
+            // this.rotationY = this.MAX_ROTATION_ANGLE;
+
+            var offset = this.$container.offset(),
+                x = 588 - offset.left + this.$window.scrollLeft(),
+                y = 450 - offset.top + this.$window.scrollTop();
+
+            this.rotationX = (this.center.y - y) / this.center.y * this.MAX_ROTATION_ANGLE;
+            this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
+
+
             this.strategyIndex = 0;
             this.translationCount = 0;
             this.theta = 0;
@@ -107,7 +194,7 @@
         },
         bindEvent: function() {
             this.$container.on('click', this.setupFigure);
-            this.$container.on('mousemove', this.changeAngle);
+            // this.$container.on('mousemove', this.changeAngle);
         },
         changeAngle: function(event) {
             var offset = this.$container.offset(),
@@ -118,11 +205,18 @@
             this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
         },
         setupFigure: function() {
+
+            this.center = {
+                x: this.width,
+                y: this.height / 2
+            };
+
+            this.createParticles();
             for (var i = 0, length = this.particles.length; i < length; i++) {
                 this.particles[i].setAxis(this.strategies[this.strategyIndex]());
-                // console.log(this.strategies[this.strategyIndex]());
-                // console.log(this.particles[i]);
+                console.log(this.strategyIndex);
             }
+
 
             if (++this.strategyIndex == this.strategies.length) {
                 this.strategyIndex = 0;
@@ -132,12 +226,11 @@
         drawFigure: function() {
             requestAnimationFrame(this.drawFigure);
 
-            this.context.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            this.context.fillStyle = 'rgba(255, 255, 255, 0.2)';
             this.context.fillRect(0, 0, this.width, this.height);
 
             for (var i = 0, length = this.particles.length; i < length; i++) {
                 var axis = this.particles[i].getAxis2D(this.theta);
-                console.log(axis);
 
                 this.context.beginPath();
                 this.context.fillStyle = axis.color;
@@ -154,14 +247,14 @@
             this.translationCount++;
             this.translationCount %= this.TRANSLATION_COUNT;
 
-            if (this.translationCount == 0) {
-                this.setupFigure();
-            }
+            // if (this.translationCount == 0) {
+            //     this.setupFigure();
+            // }
         }
     };
     var STRATEGY = {
-        SCATTER_RADIUS: 150,
-        CONE_ASPECT_RATIO: 1.5,
+        SCATTER_RADIUS: 200,
+        CONE_ASPECT_RATIO: 3.5,
         RING_COUNT: 5,
 
         getStrategies: function() {
@@ -237,6 +330,7 @@
     };
     var PARTICLE = function(center) {
         this.center = center;
+        console.log(this.center);
         this.init();
     };
     PARTICLE.prototype = {
