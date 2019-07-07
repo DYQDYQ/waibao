@@ -22,9 +22,10 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            top: 0px;
+            top: 20px;
             left: 0px;
             z-index: 999;
+            overflow-y: auto;
         }
         
         .container {
@@ -37,13 +38,16 @@
         
         .head {
             display: flex;
-            float: right;
+            position: absolute;
             flex-direction: row;
-            margin-top: 10px;
+            z-index: 9999;
+            right: 20px;
+            top: 10px;
         }
         
         .head .headline {
             margin: 0px 10px;
+            cursor: pointer;
         }
         
         .shouye {
@@ -61,6 +65,7 @@
             width: 310px;
             padding: 0 30px;
             box-sizing: border-box;
+            text-align: center;
         }
         
         .shouye .shouyeitem .title {
@@ -76,18 +81,65 @@
             height: 40px;
             font-size: 18px;
             border: 1px solid #000;
+            line-height: 40px;
+        }
+        .shouye .shouyeitem .lookbutton:hover{
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        .shiming {
+            display: none;
+            margin-top: 30%;
+        }
+        .wenhua {
+            text-align: center;
+            display: none;
+        }
+        .yunying {
+            display: none;
+            height: 100%;
+        }
+        .yunying .content{
+            text-align: center;
+            width: 400px;
+            height: 100%;
+            overflow-y: auto;
+            float: right;
+        }
+        .yunying .content .pingpai .pingpai-item{
+            width: 49%;
+            display: inline-block;
+
+        }  
+        .xqbutton {
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            width: 80px;
+        }
+        .xinwen {
+            display: none;
+            text-align: left;
+        }
+        .lianxi {
+            display: none;
+            text-align: center;
+            overflow-y: auto;
         }
     </style>
 </head>
 
 <body>
     <div class="head">
-        <div class="headline" onclick="shouye()">首页</div>
-        <div class="headline">企业使命</div>
-        <div class="headline">川仁文化</div>
-        <div class="headline">品牌运营</div>
-        <div class="headline">川仁新闻</div>
-        <div class="headline">合作联系</div>
+        <div class="headline" onclick="shouye('home')">首页</div>
+        <div class="headline" onclick="shouye('shiming')">企业使命</div>
+        <div class="headline" onclick="shouye('wenhua')">川仁文化</div>
+        <div class="headline" onclick="shouye('yunying')">品牌运营</div>
+        <div class="headline" onclick="shouye('xinwen')">川仁新闻</div>
+        <div class="headline" onclick="shouye('lianxi')">合作联系</div>
     </div>
     <div class="boxbody">
 
@@ -120,6 +172,146 @@
                 </div>
             </div>
         </div>
+
+        <div class="shiming">
+            <p>企业使命</p>
+            <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br />
+                在我们值得夸耀的未来，博多人敢为行业先驱，倡导健康快乐理念，引领品质生活 </p>
+            <p>
+                公司坐落于休闲旅游之都——杭州 <br />
+                集原物料源头生产、餐饮连锁经营、创业咨询管理以及直营体系建设为一体 <br />
+                介入餐饮、酒店、茶饮、养生保健等相关产业 <br />
+                我们着眼世界风云，致力成为世界一流的集团化企业<br />
+            </p>
+            <p>
+                每一天，我们都致力于创造更美好的未来 <br />
+                为员工、业务伙伴、及业务所在地提供发展和创收机会，努力为投资者提供良性投资回报 <br />
+                我们深信，集团旗下众多品牌将为人们生活增添健康活力，同时积极履行我们的社会责任<br />
+            </p>
+        </div>
+        <div class="wenhua">
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+        </div>
+
+        <div class="yunying">
+            <div class="content">
+                    <p>
+                            浙江博多控股集团有限公司始创于2000年，经过近二十年的沉淀，<br /> 
+                            现已发展成为茶饮、餐饮品牌连锁加盟及其上下游的全产业链集团公司。 <br />
+                            公司业务范围遍布全国各省、自治区及海外20多个国家和地区，拥有超过10000家门店； <br />
+                            在“大众创业、万众创新”的时代背景下，不断培育创业者， <br />
+                            把一个不起眼的行业变成一项伟大的事业。 <br />
+                            集团公司2018年荣获省级制造业“双创”平台试点示范企业称号<br />
+                        </p>
+
+                    <div class="pingpai">
+                        <div class="pingpai-item">
+                            <img src="./img/3-icon-01.png">
+                            <p>
+                                    老上号 
+                            </p>
+                            <p>
+                                    全国2500家门店 <br /> 
+                                    健康茶饮和轻食的优质结合
+                            </p>
+                        </div>
+                        <div class="pingpai-item">
+                                <img src="./img/3-icon-01.png">
+                                <p>
+                                        四川仁 
+                                </p>
+                                <p>
+                                        全国2500家门店 <br /> 
+                                        健康茶饮和轻食的优质结合
+                                </p>
+                            </div>
+                            <div class="pingpai-item">
+                                    <img src="./img/3-icon-01.png">
+                                    <p>
+                                            三锦食品厂 
+                                    </p>
+                                    <p>
+                                            全国2500家门店 <br /> 
+                                            健康茶饮和轻食的优质结合
+                                    </p>
+                                </div>
+                    </div>
+            </div>
+            
+        </div>
+
+        <div class="xinwen">
+            <div>
+                川仁新闻动态
+            </div>
+            <div>
+                <p>
+
+                        良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+                        
+                </p>
+                <p>
+
+                        2019年6月12日下午，良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+                        
+                </p>
+                <div class="xqbutton">
+                    查看详情
+                </div>
+            </div>
+        </div>
+
+        <div class="lianxi">
+                <p>博多的文化 x 人本的个性</p>
+                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+                <p>核心价值观</p>
+                <p>博多的文化 x 人本的个性</p>
+                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+                <p>核心价值观</p>
+                <p>博多的文化 x 人本的个性</p>
+                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+                <p>核心价值观</p>
+                <p>博多的文化 x 人本的个性</p>
+                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+                <p>核心价值观</p>
+                <p>博多的文化 x 人本的个性</p>
+                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+                <p>核心价值观</p>
+        </div>
     </div>
 
 
@@ -128,9 +320,55 @@
 
 </body>
 <script>
-    function shouye() {
-        var newCanvas = $('<canvas />').get(0).getContext("2d");
-        newCanvas.scale(2, 2);
+    function shouye(name) {
+        if(name == 'home'){
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            $('.shouye').fadeIn(1000)
+        }else if(name == 'shiming'){
+            $('.shouye').fadeOut(1000)
+            var kk = setTimeout(function(){
+                $('.shiming').fadeIn(1000)
+            },1000)
+        }else if(name == 'wenhua') {
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            var tt = setTimeout(function(){
+                $('.wenhua').fadeIn(1000)
+            },1000)
+        }else if(name == 'yunying') {
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            var tt = setTimeout(function(){
+                $('.yunying').fadeIn(1000)
+            },1000)
+        }else if(name == 'xinwen') {
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            var tt = setTimeout(function(){
+                $('.xinwen').fadeIn(1000)
+            },1000)
+        }else if(name == 'lianxi') {
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            var tt = setTimeout(function(){
+                $('.lianxi').fadeIn(1000)
+            },1000)
+        }
     }
     var RENDERER = {
         PARTICLE_COUNT: 1000,
