@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>canvas</title>
-    <script src="js/jquery.min.js">
-    </script>
+    <title>测试</title>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/randomColor.js"></script>
+
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
     <style>
         html,
         body {
@@ -56,7 +61,7 @@
             justify-content: center;
             position: absolute;
             top: 40%;
-            left: 0px;
+            left: -100%;
             flex-direction: row;
             width: 100%;
         }
@@ -83,35 +88,47 @@
             border: 1px solid #000;
             line-height: 40px;
         }
-        .shouye .shouyeitem .lookbutton:hover{
+        
+        .shouye .shouyeitem .lookbutton:hover {
             background: #000;
             color: #fff;
             cursor: pointer;
         }
+        
         .shiming {
             display: none;
-            margin-top: 30%;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -100%;
+            left: 0px;
+            flex-direction: row;
+            width: 100%;
         }
+        
         .wenhua {
             text-align: center;
             display: none;
         }
+        
         .yunying {
             display: none;
             height: 100%;
         }
-        .yunying .content{
+        
+        .yunying .content {
             text-align: center;
             width: 400px;
             height: 100%;
             overflow-y: auto;
             float: right;
         }
-        .yunying .content .pingpai .pingpai-item{
+        
+        .yunying .content .pingpai .pingpai-item {
             width: 49%;
             display: inline-block;
-
-        }  
+        }
+        
         .xqbutton {
             border: 1px solid #ccc;
             padding: 5px;
@@ -120,14 +137,80 @@
             margin-bottom: 30px;
             width: 80px;
         }
+        
         .xinwen {
             display: none;
             text-align: left;
         }
+        
         .lianxi {
             display: none;
             text-align: center;
             overflow-y: auto;
+        }
+        
+        .movein {
+            animation: mymove 5s 1;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes mymove {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0px;
+            }
+        }
+        
+        @-webkit-keyframes mymove {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0px;
+            }
+        }
+        
+        .movedown {
+            animation: down 3s 1;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes down {
+            0% {
+                top: -100%;
+            }
+            25% {
+                top: -80%;
+            }
+            50% {
+                top: -60%;
+            }
+            75% {
+                top: -50%;
+            }
+            100% {
+                top: 30%;
+            }
+        }
+        
+        @-webkit-keyframes down {
+            0% {
+                top: -100%;
+            }
+            25% {
+                top: -80%;
+            }
+            50% {
+                top: -60%;
+            }
+            75% {
+                top: -50%;
+            }
+            100% {
+                top: 30%;
+            }
         }
     </style>
 </head>
@@ -140,10 +223,12 @@
         <div class="headline" onclick="shouye('yunying')">品牌运营</div>
         <div class="headline" onclick="shouye('xinwen')">川仁新闻</div>
         <div class="headline" onclick="shouye('lianxi')">合作联系</div>
+
+
     </div>
     <div class="boxbody">
 
-        <div class="shouye">
+        <div id="shouyeID" class="shouye">
             <div class="shouyeitem">
                 <div class="title">企业使命</div>
                 <div class="miaosu">
@@ -175,18 +260,14 @@
 
         <div class="shiming">
             <p>企业使命</p>
-            <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br />
-                在我们值得夸耀的未来，博多人敢为行业先驱，倡导健康快乐理念，引领品质生活 </p>
+            <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br /> 在我们值得夸耀的未来，博多人敢为行业先驱，倡导健康快乐理念，引领品质生活 </p>
             <p>
-                公司坐落于休闲旅游之都——杭州 <br />
-                集原物料源头生产、餐饮连锁经营、创业咨询管理以及直营体系建设为一体 <br />
-                介入餐饮、酒店、茶饮、养生保健等相关产业 <br />
-                我们着眼世界风云，致力成为世界一流的集团化企业<br />
+                公司坐落于休闲旅游之都——杭州 <br /> 集原物料源头生产、餐饮连锁经营、创业咨询管理以及直营体系建设为一体 <br /> 介入餐饮、酒店、茶饮、养生保健等相关产业 <br /> 我们着眼世界风云，致力成为世界一流的集团化企业
+                <br />
             </p>
             <p>
-                每一天，我们都致力于创造更美好的未来 <br />
-                为员工、业务伙伴、及业务所在地提供发展和创收机会，努力为投资者提供良性投资回报 <br />
-                我们深信，集团旗下众多品牌将为人们生活增添健康活力，同时积极履行我们的社会责任<br />
+                每一天，我们都致力于创造更美好的未来 <br /> 为员工、业务伙伴、及业务所在地提供发展和创收机会，努力为投资者提供良性投资回报 <br /> 我们深信，集团旗下众多品牌将为人们生活增添健康活力，同时积极履行我们的社会责任
+                <br />
             </p>
         </div>
         <div class="wenhua">
@@ -219,49 +300,42 @@
 
         <div class="yunying">
             <div class="content">
-                    <p>
-                            浙江博多控股集团有限公司始创于2000年，经过近二十年的沉淀，<br /> 
-                            现已发展成为茶饮、餐饮品牌连锁加盟及其上下游的全产业链集团公司。 <br />
-                            公司业务范围遍布全国各省、自治区及海外20多个国家和地区，拥有超过10000家门店； <br />
-                            在“大众创业、万众创新”的时代背景下，不断培育创业者， <br />
-                            把一个不起眼的行业变成一项伟大的事业。 <br />
-                            集团公司2018年荣获省级制造业“双创”平台试点示范企业称号<br />
-                        </p>
+                <p>
+                    浙江博多控股集团有限公司始创于2000年，经过近二十年的沉淀，<br /> 现已发展成为茶饮、餐饮品牌连锁加盟及其上下游的全产业链集团公司。 <br /> 公司业务范围遍布全国各省、自治区及海外20多个国家和地区，拥有超过10000家门店； <br /> 在“大众创业、万众创新”的时代背景下，不断培育创业者， <br /> 把一个不起眼的行业变成一项伟大的事业。 <br /> 集团公司2018年荣获省级制造业“双创”平台试点示范企业称号
+                    <br />
+                </p>
 
-                    <div class="pingpai">
-                        <div class="pingpai-item">
-                            <img src="./img/3-icon-01.png">
-                            <p>
-                                    老上号 
-                            </p>
-                            <p>
-                                    全国2500家门店 <br /> 
-                                    健康茶饮和轻食的优质结合
-                            </p>
-                        </div>
-                        <div class="pingpai-item">
-                                <img src="./img/3-icon-01.png">
-                                <p>
-                                        四川仁 
-                                </p>
-                                <p>
-                                        全国2500家门店 <br /> 
-                                        健康茶饮和轻食的优质结合
-                                </p>
-                            </div>
-                            <div class="pingpai-item">
-                                    <img src="./img/3-icon-01.png">
-                                    <p>
-                                            三锦食品厂 
-                                    </p>
-                                    <p>
-                                            全国2500家门店 <br /> 
-                                            健康茶饮和轻食的优质结合
-                                    </p>
-                                </div>
+                <div class="pingpai">
+                    <div class="pingpai-item">
+                        <img src="./img/3-icon-01.png">
+                        <p>
+                            老上号
+                        </p>
+                        <p>
+                            全国2500家门店 <br /> 健康茶饮和轻食的优质结合
+                        </p>
                     </div>
+                    <div class="pingpai-item">
+                        <img src="./img/3-icon-01.png">
+                        <p>
+                            四川仁
+                        </p>
+                        <p>
+                            全国2500家门店 <br /> 健康茶饮和轻食的优质结合
+                        </p>
+                    </div>
+                    <div class="pingpai-item">
+                        <img src="./img/3-icon-01.png">
+                        <p>
+                            三锦食品厂
+                        </p>
+                        <p>
+                            全国2500家门店 <br /> 健康茶饮和轻食的优质结合
+                        </p>
+                    </div>
+                </div>
             </div>
-            
+
         </div>
 
         <div class="xinwen">
@@ -271,13 +345,13 @@
             <div>
                 <p>
 
-                        良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
-                        
+                    良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+
                 </p>
                 <p>
 
-                        2019年6月12日下午，良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
-                        
+                    2019年6月12日下午，良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+
                 </p>
                 <div class="xqbutton">
                     查看详情
@@ -286,31 +360,31 @@
         </div>
 
         <div class="lianxi">
-                <p>博多的文化 x 人本的个性</p>
-                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-                <p>核心价值观</p>
-                <p>博多的文化 x 人本的个性</p>
-                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-                <p>核心价值观</p>
-                <p>博多的文化 x 人本的个性</p>
-                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-                <p>核心价值观</p>
-                <p>博多的文化 x 人本的个性</p>
-                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-                <p>核心价值观</p>
-                <p>博多的文化 x 人本的个性</p>
-                <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-                <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-                <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-                <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
+            <p>博多的文化 x 人本的个性</p>
+            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
+            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
+            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
+            <p>核心价值观</p>
         </div>
     </div>
 
@@ -319,62 +393,81 @@
 
 
 </body>
+
+<script src="js/fastclick.js"></script>
+<script src="js/snabbt.min.js"></script>
+
 <script>
+    function test() {
+        var stick = document.getElementById('test');
+        snabbt(stick, 'attention', {
+            position: [400, 0, 0],
+            springConstant: 2.4,
+            springDeceleration: 0.9,
+        });
+    }
+
     function shouye(name) {
-        if(name == 'home'){
-            $('.shiming').fadeOut(1000)
-            $('.wenhua').fadeOut(1000)
-            $('.yunying').fadeOut(1000)
-            $('.xinwen').fadeOut(1000)
+
+        // RENDERER.setupFigure();
+        if (name == 'home') {
+            // $('.shiming').fadeOut(1000)
+            // $('.wenhua').fadeOut(1000)
+            // $('.yunying').fadeOut(1000)
+            // $('.xinwen').fadeOut(1000)
             $('.shouye').fadeIn(1000)
-        }else if(name == 'shiming'){
+            $('.shouye').addClass('movein')
+
+
+        } else if (name == 'shiming') {
             $('.shouye').fadeOut(1000)
-            var kk = setTimeout(function(){
+            var kk = setTimeout(function() {
                 $('.shiming').fadeIn(1000)
-            },1000)
-        }else if(name == 'wenhua') {
+                $('.shiming').addClass('movedown')
+            }, 1000)
+        } else if (name == 'wenhua') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
-            var tt = setTimeout(function(){
+            var tt = setTimeout(function() {
                 $('.wenhua').fadeIn(1000)
-            },1000)
-        }else if(name == 'yunying') {
+            }, 1000)
+        } else if (name == 'yunying') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
-            var tt = setTimeout(function(){
+            var tt = setTimeout(function() {
                 $('.yunying').fadeIn(1000)
-            },1000)
-        }else if(name == 'xinwen') {
+            }, 1000)
+        } else if (name == 'xinwen') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
-            var tt = setTimeout(function(){
+            var tt = setTimeout(function() {
                 $('.xinwen').fadeIn(1000)
-            },1000)
-        }else if(name == 'lianxi') {
+            }, 1000)
+        } else if (name == 'lianxi') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
-            var tt = setTimeout(function(){
+            var tt = setTimeout(function() {
                 $('.lianxi').fadeIn(1000)
-            },1000)
+            }, 1000)
         }
     }
     var RENDERER = {
-        PARTICLE_COUNT: 1000,
-        PARTICLE_RADIUS: 1,
+        PARTICLE_COUNT: 500,
+        PARTICLE_RADIUS: 3,
         MAX_ROTATION_ANGLE: Math.PI / 60,
-        TRANSLATION_COUNT: 5000,
+        TRANSLATION_COUNT: 500,
 
         init: function(strategy) {
             this.setParameters(strategy);
@@ -412,7 +505,6 @@
             this.rotationX = (this.center.y - y) / this.center.y * this.MAX_ROTATION_ANGLE;
             this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
 
-
             this.strategyIndex = 0;
             this.translationCount = 0;
             this.theta = 0;
@@ -443,19 +535,9 @@
             this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
         },
         setupFigure: function() {
-
-            this.center = {
-                x: this.width,
-                y: this.height / 2
-            };
-
-            this.createParticles();
             for (var i = 0, length = this.particles.length; i < length; i++) {
                 this.particles[i].setAxis(this.strategies[this.strategyIndex]());
-                console.log(this.strategyIndex);
             }
-
-
             if (++this.strategyIndex == this.strategies.length) {
                 this.strategyIndex = 0;
             }
@@ -491,8 +573,8 @@
         }
     };
     var STRATEGY = {
-        SCATTER_RADIUS: 200,
-        CONE_ASPECT_RATIO: 3.5,
+        SCATTER_RADIUS: 230,
+        CONE_ASPECT_RATIO: 1.5,
         RING_COUNT: 5,
 
         getStrategies: function() {
@@ -568,7 +650,6 @@
     };
     var PARTICLE = function(center) {
         this.center = center;
-        console.log(this.center);
         this.init();
     };
     PARTICLE.prototype = {
@@ -663,7 +744,7 @@
         }
     };
     $(function() {
-        RENDERER.init(STRATEGY);
+        // RENDERER.init(STRATEGY);
     });
 </script>
 
