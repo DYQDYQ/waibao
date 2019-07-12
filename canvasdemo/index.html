@@ -26,7 +26,12 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #002b5a;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        
+        p {
+            letter-spacing: 2px;
         }
         /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
         
@@ -50,6 +55,14 @@
             background-color: #002b5a;
         }
         
+        .company {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            font-size: 24px;
+        }
+        
         .boxbody {
             width: 100%;
             height: 100%;
@@ -58,7 +71,6 @@
             left: 0px;
             z-index: 999;
             overflow-y: auto;
-            color: #fff;
         }
         
         .container1 {
@@ -78,7 +90,7 @@
             z-index: 9999;
             right: 20px;
             top: 10px;
-            color: #fff;
+            color: #000;
         }
         
         .head .headline {
@@ -109,25 +121,35 @@
         }
         
         .shouye .shouyeitem .title {
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 10px;
         }
         
         .shouye .shouyeitem .miaosu {
             font-size: 14px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .shouye .shouyeitem .miaosu p {
+            margin: 6px 0px;
         }
         
         .shouye .shouyeitem .lookbutton {
             width: 250px;
             height: 40px;
             font-size: 18px;
-            border: 1px solid #fff;
+            border: 1px solid #000;
             line-height: 40px;
             padding: 0px;
         }
         
         .shouye .shouyeitem .lookbutton:hover {
-            background: #fff;
-            color: #002b5a;
+            background: #000;
+            color: #fff;
             cursor: pointer;
         }
         
@@ -166,6 +188,7 @@
         
         .pingpai {
             overflow: hidden;
+            padding: 20px 17%;
         }
         
         .yunying .content .pingpai .pingpai-item {
@@ -258,7 +281,7 @@
                 top: -100%;
             }
             100% {
-                top: 20px;
+                top: 40px;
             }
         }
         
@@ -267,7 +290,7 @@
                 top: -100%;
             }
             100% {
-                top: 20px;
+                top: 40px;
             }
         }
         
@@ -281,7 +304,7 @@
                 top: 100%;
             }
             100% {
-                top: 20px;
+                top: 40px;
             }
         }
         
@@ -290,7 +313,7 @@
                 top: 100%;
             }
             100% {
-                top: 20px;
+                top: 40px;
             }
         }
         
@@ -342,6 +365,7 @@
             width: 100%;
             height: 100%;
             z-index: 10;
+            background: #fff;
         }
         
         .box {
@@ -356,6 +380,9 @@
 </head>
 
 <body>
+    <div class="company">
+        川仁餐饮管理有限责任公司
+    </div>
     <div class="head">
         <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
         </div>
@@ -378,7 +405,10 @@
             <div class="shouyeitem theme-5">
                 <div class="title">企业使命</div>
                 <div class="miaosu">
-                    <p>企业使命企业使命</p>
+                    <p>倡导健康饮食理念</p>
+                    <p>缔造健康饮食标杆</p>
+                    <p>提供平等发展机会</p>
+                    <p>致力社会公益事业</p>
                 </div>
                 <div class="lookbutton particles-button" onclick="shouye('shiming')">
                     查看详情
@@ -387,7 +417,10 @@
             <div class="shouyeitem">
                 <div class="title">企业文化</div>
                 <div class="miaosu">
-                    <p>企业使命企业使命</p>
+                    <p>成就人，造福人</p>
+                    <p>通过文化感化消费者</p>
+                    <p>树立品牌感染消费者</p>
+                    <p>献出真诚感动消费者</p>
                 </div>
                 <div class="lookbutton" onclick="shouye('wenhua')">
                     查看详情
@@ -396,7 +429,9 @@
             <div class="shouyeitem">
                 <div class="title">品牌运营</div>
                 <div class="miaosu">
-                    <p>企业使命企业使命</p>
+                    <p>以顾客的需求为我们的追求</p>
+                    <p>以市场的变化为我们的导向</p>
+                    <p>以国际的视野为我们的目标</p>
                 </div>
                 <div class="lookbutton" onclick="shouye('yunying')">
                     查看详情
@@ -405,55 +440,43 @@
         </div>
 
         <div class="shiming">
-            <p>企业使命</p>
-            <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br /> 在我们值得夸耀的未来，博多人敢为行业先驱，倡导健康快乐理念，引领品质生活 </p>
+            <p style="font-size: 28px;">我们是川仁家人</p>
+            <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br /> 在我们值得夸耀的未来，川仁家人敢为行业先驱，倡导健康饮食理念，缔造健康饮食标杆。</p>
             <p>
-                公司坐落于休闲旅游之都——杭州 <br /> 集原物料源头生产、餐饮连锁经营、创业咨询管理以及直营体系建设为一体 <br /> 介入餐饮、酒店、茶饮、养生保健等相关产业 <br /> 我们着眼世界风云，致力成为世界一流的集团化企业
-                <br />
+                公司成立于1997年，公司坐落于东方小巴黎——哈尔滨。<br /> 是集餐饮文化研究、传统膳食开发、地方特色食品生产于一体的餐饮连锁经营企业。
+                <br />旗下品牌有老上号砂锅居、四川仁火锅、三锦食品三大品牌，企业拥有独立的食品加工厂及物流配送中心。
             </p>
             <p>
-                每一天，我们都致力于创造更美好的未来 <br /> 为员工、业务伙伴、及业务所在地提供发展和创收机会，努力为投资者提供良性投资回报 <br /> 我们深信，集团旗下众多品牌将为人们生活增添健康活力，同时积极履行我们的社会责任
-                <br />
+                我们着眼世界风云，致力成为世界一流的集团化企业。<br /> 每一天，我们都致力于创造更美好的未来。<br /> 为员工、业务伙伴、及业务所在地提供发展和创收机会，努力为投资者提供良性投资回报。
+                <br />我们深信，集团旗下众多品牌将为人们生活增添健康活力，同时积极履行我们的社会责任。 <br />
             </p>
         </div>
         <div id="wenhua" class="wenhua">
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
+            <p style="font-size: 28px;">企业纲领</p>
+            <p>成就人 造福人</p>
+            <p style="font-size: 28px;">企业愿景：五年内成就</p>
+            <p>十个千万富翁</p>
+            <p>五十个百万富翁</p>
+            <p>五百个员工有车有房</p>
+            <p style="font-size: 28px;">员工理念：我行一切都行，一切的不行</p>
+            <p>都是因为我不行</p>
+            <p>抢活干就是抢钱赚</p>
         </div>
 
         <div id="yunying" class="yunying">
-            <div class="content">
+            <div class="content" style="margin-top: 5%">
                 <p>
-                    浙江博多控股集团有限公司始创于2000年，经过近二十年的沉淀，<br /> 现已发展成为茶饮、餐饮品牌连锁加盟及其上下游的全产业链集团公司。 <br /> 公司业务范围遍布全国各省、自治区及海外20多个国家和地区，拥有超过10000家门店； <br /> 在“大众创业、万众创新”的时代背景下，不断培育创业者， <br /> 把一个不起眼的行业变成一项伟大的事业。 <br /> 集团公司2018年荣获省级制造业“双创”平台试点示范企业称号
+                    哈尔滨川仁餐饮管理有限公司成立于1997年，<br /> 经过二十年的沉淀，现已经发展成为集餐饮文化研究、传统膳食开发、地方特色食品生产于一体的餐饮连锁经营企业。
+                    <br /> 旗下品牌有老上号砂锅居、四川仁火锅、三锦食品三大品牌，企业拥有独立的食品加工厂及物流配送中心。
+                    <br /> 企业始终按照
+                    <br />“成就人、造福人”的企业纲领和“你用餐我用心”
+                    <br />的经营理念来打造团队、研发产品和传递服务，力求以味道赢得顾客、以诚信赢取市场！
                     <br />
                 </p>
 
                 <div class="pingpai">
                     <div class="pingpai-item">
-                        <img src="./img/3-icon-01.png">
+                        <img style="width: 200px;" src="./img/ls.png">
                         <p>
                             老上号
                         </p>
@@ -462,7 +485,7 @@
                         </p>
                     </div>
                     <div class="pingpai-item">
-                        <img src="./img/3-icon-01.png">
+                        <img style="width: 200px;" src="./img/sc.png">
                         <p>
                             四川仁
                         </p>
@@ -471,7 +494,7 @@
                         </p>
                     </div>
                     <div class="pingpai-item">
-                        <img src="./img/3-icon-01.png">
+                        <img style="width: 200px;" src="./img/sj.png">
                         <p>
                             三锦食品厂
                         </p>
@@ -491,12 +514,27 @@
             <div>
                 <p>
 
-                    良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+                    ——记全国劳动模范哈尔滨川仁餐饮管理有限公司旗下品牌“老上号”海关店农民工店长赵鹏飞
 
                 </p>
                 <p>
 
-                    2019年6月12日下午，良渚街道党委书记曾宏陪同荷兰韦尔特市市长友斯·海曼斯等一行代表团莅临博多集团
+                    4月28日上午，北京人民大会堂。哈尔滨川仁餐饮管理有限公司旗下品牌“老上号”海关店店长赵鹏飞，作为哈尔滨市全国劳动模范代表团的领队
+
+                </p>
+                <div class="xqbutton">
+                    查看详情
+                </div>
+            </div>
+            <div>
+                <p>
+
+                    川仁餐饮一行团队对工大机器人生产中心进行参观考察
+
+                </p>
+                <p>
+
+                    5月11日，在川仁餐饮有限公司董事长杨柳带领下，公司一行团队对工大机器人生产中心进行参观考察，对餐饮智能化与工大专家进行交流与讨论。
 
                 </p>
                 <div class="xqbutton">
@@ -506,31 +544,24 @@
         </div>
 
         <div class="lianxi">
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
-            <p>博多的文化 x 人本的个性</p>
-            <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
-            <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
-            <p>我们，博多家庭的每一员，恪守共同的品质 </p>
-            <p>核心价值观</p>
+            <p style="font-size: 28px;">品牌合作</p>
+            <p>公司以可持续的品牌战略规划促进企业经营良性发展</p>
+            <p>通过优质的品牌运营塑造企业的核心专长，打造品牌核心竞争力</p>
+            <p>信息部：0451-82626338 </p>
+            <p>品牌异业合作：0451-82626338-8202</p>
+            <p style="font-size: 28px;">加盟合作</p>
+            <p>公司拥有前沿理念、雄厚实力、16年运营经验，形成行业领先的品牌连锁运营能力</p>
+            <p>完善独到的品牌定位、优势的运营平台为创业者提供品牌与技术支持服务</p>
+            <p>老上号加盟：400-002-7999</p>
+            <p>四川仁加盟：400-002-7999</p>
+            <p>食品代加工：0451-82804229</p>
+            <p style="font-size: 28px;">多元合作</p>
+            <p>配合企业整体品牌战略的推进，期冀展开多样化的传媒合作</p>
+            <p>实现品牌管理的最大能效，把握品牌战略的有效施行，明确品牌发展的大方向</p>
+            <p>企业联系</p>
+            <p>电话：+86-451-82626338</p>
+            <p>传真：+86-451-82626338</p>
+            <p>地址：哈尔滨市群力第六大道4468号</p>
         </div>
     </div>
 
@@ -557,22 +588,26 @@
 
         if (name != 'home') {
             $('#particles-js').fadeOut(1000)
+        } else {
+            $('#particles-js').fadeIn(1000)
         }
 
-        if (name == 'lianxi') {
-            $('#particles-js').fadeOut(1000)
-            $('#jsi-particle-container').fadeOut(1000)
-            $('.box').fadeIn(1000)
-            if (time == 0) {
-                begin()
 
-            }
-            time++
-        }
-        if (name !== 'lianxi') {
-            $('.box').fadeOut(1000)
-            $('#jsi-particle-container').fadeIn(1000)
-        }
+
+        // if (name == 'lianxi') {
+        //     $('#particles-js').fadeOut(1000)
+        //     $('#jsi-particle-container').fadeOut(1000)
+        //     $('.box').fadeIn(1000)
+        //     if (time == 0) {
+        //         begin()
+
+        //     }
+        //     time++
+        // }
+        // if (name !== 'lianxi') {
+        //     $('.box').fadeOut(1000)
+        //     $('#jsi-particle-container').fadeIn(1000)
+        // }
         if (name == 'home') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
@@ -597,12 +632,12 @@
             var kk = setTimeout(function() {
                 $('.shiming').fadeIn(1000)
                 $('.shiming').addClass('movedown')
-                $('.shiming').snabbt('attention', {
-                    rotation: [0, 0, 1.5 * Math.PI],
-                    springConstant: 1.9,
-                    springDeceleration: 0.9,
-                    delay: 2000
-                });
+                    // $('.shiming').snabbt('attention', {
+                    //     rotation: [0, 0, 1.5 * Math.PI],
+                    //     springConstant: 1.9,
+                    //     springDeceleration: 0.9,
+                    //     delay: 2000
+                    // });
             }, 500)
         } else if (name == 'wenhua') {
             $('.shouye').fadeOut(1000)
@@ -614,13 +649,13 @@
             var tt = setTimeout(function() {
                 $('.wenhua').fadeIn(1000)
                 let ele = document.getElementById('wenhua');
-                $('.wenhua').snabbt({
-                    position: [100, 0, 0],
-                    rotation: [0, 0, 2 * Math.PI],
-                    easing: 'spring',
-                    springConstant: 0.3,
-                    springDeceleration: 0.8,
-                })
+                // $('.wenhua').snabbt({
+                //     position: [100, 0, 0],
+                //     rotation: [0, 0, 2 * Math.PI],
+                //     easing: 'spring',
+                //     springConstant: 0.3,
+                //     springDeceleration: 0.8,
+                // })
             }, 1000)
         } else if (name == 'yunying') {
             $('.shouye').fadeOut(1000)
@@ -633,11 +668,11 @@
                 $('.yunying').fadeIn(1000)
                 $('.yunying').addClass('moveright')
                 let ele = document.getElementById('yunying');
-                $('.yunying').snabbt({
-                    rotation: [0, 2 * Math.PI, 0],
-                    transformOrigin: [$('.yunying').clientWidth / 2, 0, 0],
-                    delay: 1000
-                })
+                // $('.yunying').snabbt({
+                //     rotation: [0, 2 * Math.PI, 0],
+                //     transformOrigin: [$('.yunying').clientWidth / 2, 0, 0],
+                //     delay: 1000
+                // })
 
             }, 1000)
         } else if (name == 'xinwen') {
@@ -663,8 +698,8 @@
         }
     }
     var RENDERER = {
-        PARTICLE_COUNT: 300,
-        PARTICLE_RADIUS: 1.5,
+        PARTICLE_COUNT: 250,
+        PARTICLE_RADIUS: 4,
         MAX_ROTATION_ANGLE: Math.PI / 60,
         TRANSLATION_COUNT: 500,
 
@@ -695,8 +730,8 @@
             };
 
             var offset = this.$container.offset(),
-                x = 588 - offset.left + this.$window.scrollLeft(),
-                y = 450 - offset.top + this.$window.scrollTop();
+                x = this.width / 2 - 20 - offset.left + this.$window.scrollLeft(),
+                y = this.height / 2 - offset.top + this.$window.scrollTop();
 
             this.rotationX = (this.center.y - y) / this.center.y * this.MAX_ROTATION_ANGLE;
             this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
@@ -719,13 +754,16 @@
             this.changeAngle = this.changeAngle.bind(this);
         },
         bindEvent: function() {
-            this.$container.on('click', this.setupFigure);
+            // this.$container.on('click', this.setupFigure);
             // this.$container.on('mousemove', this.changeAngle);
         },
         changeAngle: function(event) {
             var offset = this.$container.offset(),
                 x = event.clientX - offset.left + this.$window.scrollLeft(),
                 y = event.clientY - offset.top + this.$window.scrollTop();
+
+            console.log(event.clientX)
+            console.log(event.clientY)
 
             this.rotationX = (this.center.y - y) / this.center.y * this.MAX_ROTATION_ANGLE;
             this.rotationY = (this.center.x - x) / this.center.x * this.MAX_ROTATION_ANGLE;
@@ -742,7 +780,7 @@
         drawFigure: function() {
             requestAnimationFrame(this.drawFigure);
 
-            this.context.fillStyle = '#002b5a';
+            this.context.fillStyle = '#fff';
             this.context.fillRect(0, 0, this.width, this.height);
 
             for (var i = 0, length = this.particles.length; i < length; i++) {
@@ -769,8 +807,8 @@
         }
     };
     var STRATEGY = {
-        SCATTER_RADIUS: 300,
-        CONE_ASPECT_RATIO: 1.5,
+        SCATTER_RADIUS: $('#jsi-particle-container').height() / 3,
+        CONE_ASPECT_RATIO: 1,
         RING_COUNT: 5,
 
         getStrategies: function() {
@@ -785,14 +823,15 @@
             return strategies;
         },
         createSphere: function() {
+            var SCATTER_RADIUS = $('#jsi-particle-container').height() / 4;
             var cosTheta = Math.random() * 2 - 1,
                 sinTheta = Math.sqrt(1 - cosTheta * cosTheta),
                 phi = Math.random() * 2 * Math.PI;
 
             return {
-                x: this.SCATTER_RADIUS * sinTheta * Math.cos(phi),
-                y: this.SCATTER_RADIUS * sinTheta * Math.sin(phi),
-                z: this.SCATTER_RADIUS * cosTheta,
+                x: SCATTER_RADIUS * sinTheta * Math.cos(phi),
+                y: SCATTER_RADIUS * sinTheta * Math.sin(phi),
+                z: SCATTER_RADIUS * cosTheta,
                 hue: Math.round(phi / Math.PI * 30)
             };
         },
@@ -832,17 +871,17 @@
         },
         createVase: function() {
             var theta = Math.random() * Math.PI,
-                x = Math.abs(this.SCATTER_RADIUS * Math.cos(theta) / 2) + this.SCATTER_RADIUS / 8,
+                x = Math.abs(this.SCATTER_RADIUS * Math.cos(theta) * 1.5),
                 y = this.SCATTER_RADIUS * Math.cos(theta) * 1.2,
                 phi = Math.random() * Math.PI * 2;
 
             return {
-                x: x * Math.cos(phi),
+                x: x * Math.sin(phi),
                 y: y,
-                z: x * Math.sin(phi),
+                z: x * Math.cos(phi),
                 hue: Math.round(phi / Math.PI * 30)
             };
-        }
+        },
     };
     var PARTICLE = function(center) {
         this.center = center;
@@ -932,9 +971,11 @@
             var axis = this.getAxis3D(),
                 scale = this.FOCUS_POSITION / (this.FOCUS_POSITION + axis.z);
 
+
             return {
                 x: this.center.x + axis.x * scale,
                 y: this.center.y - axis.y * scale,
+                // color: `hsl(356, 76%, 41%)`
                 color: this.COLOR.replace('%hue', this.hue + theta)
             };
         }
