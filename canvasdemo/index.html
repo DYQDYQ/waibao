@@ -8,11 +8,16 @@
     <title>测试</title>
 
     <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
     <script type="text/javascript" src="js/randomColor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
 
 
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <!-- <link rel="stylesheet" href="css/skeleton.css"> -->
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/lineAnimation.css">
+
     <style>
         html,
         body {
@@ -21,24 +26,49 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            background-color: #002b5a;
+        }
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+        
+         ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+            background-color: #F5F5F5;
+        }
+        /*定义滚动条轨道 内阴影+圆角*/
+        
+         ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        /*定义滑块 内阴影+圆角*/
+        
+         ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #002b5a;
         }
         
         .boxbody {
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: relative;
             top: 20px;
             left: 0px;
             z-index: 999;
             overflow-y: auto;
+            color: #fff;
         }
         
-        .container {
-            width: 100%;
+        .container1 {
+            width: 100% !important;
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            position: absolute;
+            top: 0px;
+            z-index: 10;
         }
         
         .head {
@@ -48,11 +78,16 @@
             z-index: 9999;
             right: 20px;
             top: 10px;
+            color: #fff;
         }
         
         .head .headline {
-            margin: 0px 10px;
+            margin: 0px 4px;
             cursor: pointer;
+            height: 30px;
+            line-height: 30px;
+            width: 70px;
+            text-align: center;
         }
         
         .shouye {
@@ -60,10 +95,10 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            top: 40%;
             left: -100%;
             flex-direction: row;
             width: 100%;
+            height: 100%;
         }
         
         .shouye .shouyeitem {
@@ -82,16 +117,17 @@
         }
         
         .shouye .shouyeitem .lookbutton {
-            width: 100%;
+            width: 250px;
             height: 40px;
             font-size: 18px;
-            border: 1px solid #000;
+            border: 1px solid #fff;
             line-height: 40px;
+            padding: 0px;
         }
         
         .shouye .shouyeitem .lookbutton:hover {
-            background: #000;
-            color: #fff;
+            background: #fff;
+            color: #002b5a;
             cursor: pointer;
         }
         
@@ -104,28 +140,36 @@
             left: 0px;
             flex-direction: row;
             width: 100%;
+            padding: 20px;
         }
         
         .wenhua {
             text-align: center;
             display: none;
+            width: 100%;
         }
         
         .yunying {
             display: none;
-            height: 100%;
+            position: absolute;
+            top: 20px;
+            right: -100%;
+            width: 100%;
         }
         
         .yunying .content {
             text-align: center;
-            width: 400px;
-            height: 100%;
+            width: 100%;
             overflow-y: auto;
             float: right;
         }
         
+        .pingpai {
+            overflow: hidden;
+        }
+        
         .yunying .content .pingpai .pingpai-item {
-            width: 49%;
+            width: 33%;
             display: inline-block;
         }
         
@@ -141,39 +185,117 @@
         .xinwen {
             display: none;
             text-align: left;
+            position: absolute;
+            top: -100%;
+            left: 0px;
+            width: 100%;
+            padding: 0px 20px;
         }
         
         .lianxi {
             display: none;
             text-align: center;
             overflow-y: auto;
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            width: 100%;
         }
         
         .movein {
-            animation: mymove 5s 1;
+            animation: mymove 3s 1;
             animation-fill-mode: forwards;
         }
         
         @keyframes mymove {
-            from {
+            0% {
                 left: -100%;
             }
-            to {
-                left: 0px;
+            100% {
+                left: 0%;
             }
         }
         
         @-webkit-keyframes mymove {
-            from {
+            0% {
                 left: -100%;
             }
-            to {
-                left: 0px;
+            100% {
+                left: 0%;
+            }
+        }
+        
+        .moveright {
+            animation: myright 1s 1;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes myright {
+            0% {
+                right: -100%;
+            }
+            100% {
+                right: 0%;
+            }
+        }
+        
+        @-webkit-keyframes myright {
+            0% {
+                right: -100%;
+            }
+            100% {
+                right: 0%;
+            }
+        }
+        
+        .moverightdown {
+            animation: myrightdown 3s 1;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes myrightdown {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 20px;
+            }
+        }
+        
+        @-webkit-keyframes myrightdown {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 20px;
+            }
+        }
+        
+        .moveup {
+            animation: myup 2s 1;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes myup {
+            0% {
+                top: 100%;
+            }
+            100% {
+                top: 20px;
+            }
+        }
+        
+        @-webkit-keyframes myup {
+            0% {
+                top: 100%;
+            }
+            100% {
+                top: 20px;
             }
         }
         
         .movedown {
-            animation: down 3s 1;
+            animation: down 1s 1;
             animation-fill-mode: forwards;
         }
         
@@ -212,29 +334,53 @@
                 top: 30%;
             }
         }
+        
+        #particles-js {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        
+        .box {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
     </style>
 </head>
 
 <body>
     <div class="head">
-        <div class="headline" onclick="shouye('home')">首页</div>
-        <div class="headline" onclick="shouye('shiming')">企业使命</div>
-        <div class="headline" onclick="shouye('wenhua')">川仁文化</div>
-        <div class="headline" onclick="shouye('yunying')">品牌运营</div>
-        <div class="headline" onclick="shouye('xinwen')">川仁新闻</div>
-        <div class="headline" onclick="shouye('lianxi')">合作联系</div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
+        </div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('shiming')">企业使命
+        </div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('wenhua')">川仁文化
+        </div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('yunying')">品牌运营
+        </div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('xinwen')">川仁新闻
+        </div>
+        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('lianxi')">合作联系
+        </div>
 
 
     </div>
     <div class="boxbody">
 
         <div id="shouyeID" class="shouye">
-            <div class="shouyeitem">
+            <div class="shouyeitem theme-5">
                 <div class="title">企业使命</div>
                 <div class="miaosu">
                     <p>企业使命企业使命</p>
                 </div>
-                <div class="lookbutton">
+                <div class="lookbutton particles-button" onclick="shouye('shiming')">
                     查看详情
                 </div>
             </div>
@@ -243,7 +389,7 @@
                 <div class="miaosu">
                     <p>企业使命企业使命</p>
                 </div>
-                <div class="lookbutton">
+                <div class="lookbutton" onclick="shouye('wenhua')">
                     查看详情
                 </div>
             </div>
@@ -252,7 +398,7 @@
                 <div class="miaosu">
                     <p>企业使命企业使命</p>
                 </div>
-                <div class="lookbutton">
+                <div class="lookbutton" onclick="shouye('yunying')">
                     查看详情
                 </div>
             </div>
@@ -270,7 +416,7 @@
                 <br />
             </p>
         </div>
-        <div class="wenhua">
+        <div id="wenhua" class="wenhua">
             <p>博多的文化 x 人本的个性</p>
             <p>以人本的个性、完善的部门架构形成各种各样的团队组织多样性 </p>
             <p>不同的个体特性在博多进行矢量融合的时候，产生新的价值 </p>
@@ -298,7 +444,7 @@
             <p>核心价值观</p>
         </div>
 
-        <div class="yunying">
+        <div id="yunying" class="yunying">
             <div class="content">
                 <p>
                     浙江博多控股集团有限公司始创于2000年，经过近二十年的沉淀，<br /> 现已发展成为茶饮、餐饮品牌连锁加盟及其上下游的全产业链集团公司。 <br /> 公司业务范围遍布全国各省、自治区及海外20多个国家和地区，拥有超过10000家门店； <br /> 在“大众创业、万众创新”的时代背景下，不断培育创业者， <br /> 把一个不起眼的行业变成一项伟大的事业。 <br /> 集团公司2018年荣获省级制造业“双创”平台试点示范企业称号
@@ -389,7 +535,12 @@
     </div>
 
 
-    <div id="jsi-particle-container" class="container"></div>
+    <div id="jsi-particle-container" class="container1"></div>
+
+
+    <!-- particles.js container -->
+    <div id="particles-js"></div>
+    <div class="box"></div>
 
 
 </body>
@@ -398,41 +549,78 @@
 <script src="js/snabbt.min.js"></script>
 
 <script>
-    function test() {
-        var stick = document.getElementById('test');
-        snabbt(stick, 'attention', {
-            position: [400, 0, 0],
-            springConstant: 2.4,
-            springDeceleration: 0.9,
-        });
-    }
+    var time = 0;
 
     function shouye(name) {
 
-        // RENDERER.setupFigure();
+        RENDERER.setupFigure();
+
+        if (name != 'home') {
+            $('#particles-js').fadeOut(1000)
+        }
+
+        if (name == 'lianxi') {
+            $('#particles-js').fadeOut(1000)
+            $('#jsi-particle-container').fadeOut(1000)
+            $('.box').fadeIn(1000)
+            if (time == 0) {
+                begin()
+
+            }
+            time++
+        }
+        if (name !== 'lianxi') {
+            $('.box').fadeOut(1000)
+            $('#jsi-particle-container').fadeIn(1000)
+        }
         if (name == 'home') {
-            // $('.shiming').fadeOut(1000)
-            // $('.wenhua').fadeOut(1000)
-            // $('.yunying').fadeOut(1000)
-            // $('.xinwen').fadeOut(1000)
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
             $('.shouye').fadeIn(1000)
+            $('#particles-js').fadeIn(1000)
             $('.shouye').addClass('movein')
 
 
         } else if (name == 'shiming') {
+
             $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
+
             var kk = setTimeout(function() {
                 $('.shiming').fadeIn(1000)
                 $('.shiming').addClass('movedown')
-            }, 1000)
+                $('.shiming').snabbt('attention', {
+                    rotation: [0, 0, 1.5 * Math.PI],
+                    springConstant: 1.9,
+                    springDeceleration: 0.9,
+                    delay: 2000
+                });
+            }, 500)
         } else if (name == 'wenhua') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
             var tt = setTimeout(function() {
                 $('.wenhua').fadeIn(1000)
+                let ele = document.getElementById('wenhua');
+                $('.wenhua').snabbt({
+                    position: [100, 0, 0],
+                    rotation: [0, 0, 2 * Math.PI],
+                    easing: 'spring',
+                    springConstant: 0.3,
+                    springDeceleration: 0.8,
+                })
             }, 1000)
         } else if (name == 'yunying') {
             $('.shouye').fadeOut(1000)
@@ -440,8 +628,17 @@
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
             var tt = setTimeout(function() {
                 $('.yunying').fadeIn(1000)
+                $('.yunying').addClass('moveright')
+                let ele = document.getElementById('yunying');
+                $('.yunying').snabbt({
+                    rotation: [0, 2 * Math.PI, 0],
+                    transformOrigin: [$('.yunying').clientWidth / 2, 0, 0],
+                    delay: 1000
+                })
+
             }, 1000)
         } else if (name == 'xinwen') {
             $('.shouye').fadeOut(1000)
@@ -449,23 +646,25 @@
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
-            var tt = setTimeout(function() {
-                $('.xinwen').fadeIn(1000)
-            }, 1000)
+            $('.lianxi').fadeOut(1000)
+            $('.xinwen').fadeIn(1000)
+            $('.xinwen').addClass('moverightdown')
         } else if (name == 'lianxi') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
             var tt = setTimeout(function() {
                 $('.lianxi').fadeIn(1000)
+                $('.lianxi').addClass('moveup')
             }, 1000)
         }
     }
     var RENDERER = {
-        PARTICLE_COUNT: 500,
-        PARTICLE_RADIUS: 3,
+        PARTICLE_COUNT: 300,
+        PARTICLE_RADIUS: 1.5,
         MAX_ROTATION_ANGLE: Math.PI / 60,
         TRANSLATION_COUNT: 500,
 
@@ -484,19 +683,16 @@
             this.width = this.$container.width();
             this.height = this.$container.height();
 
-            this.$canvas = $('<canvas />').attr({
+            this.$canvas = $('<canvas id="firstcanvas" />').attr({
                 width: this.width,
                 height: this.height
             }).appendTo(this.$container);
-            this.context = this.$canvas.get(0).getContext('2d');
+            this.context = document.getElementById('firstcanvas').getContext('2d');
 
             this.center = {
                 x: this.width / 2,
                 y: this.height / 2
             };
-
-            // this.rotationX = this.MAX_ROTATION_ANGLE;
-            // this.rotationY = this.MAX_ROTATION_ANGLE;
 
             var offset = this.$container.offset(),
                 x = 588 - offset.left + this.$window.scrollLeft(),
@@ -546,7 +742,7 @@
         drawFigure: function() {
             requestAnimationFrame(this.drawFigure);
 
-            this.context.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            this.context.fillStyle = '#002b5a';
             this.context.fillRect(0, 0, this.width, this.height);
 
             for (var i = 0, length = this.particles.length; i < length; i++) {
@@ -573,7 +769,7 @@
         }
     };
     var STRATEGY = {
-        SCATTER_RADIUS: 230,
+        SCATTER_RADIUS: 300,
         CONE_ASPECT_RATIO: 1.5,
         RING_COUNT: 5,
 
@@ -744,8 +940,123 @@
         }
     };
     $(function() {
-        // RENDERER.init(STRATEGY);
+        RENDERER.init(STRATEGY);
     });
 </script>
+
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+
+<script src="js/lib/stats.js"></script>
+
+<script>
+    var SEPARATION = 100,
+        AMOUNTX = 15,
+        AMOUNTY = 15;
+
+    var container;
+    var camera, scene, renderer;
+
+    var particles, particle, count = 0;
+
+    var mouseX = 0,
+        mouseY = 0;
+
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2;
+
+    var animaterequest;
+
+    function begin() {
+
+
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+
+        particles = new Array();
+
+        var PI2 = Math.PI * 2;
+        var material = new THREE.ParticleCanvasMaterial({
+
+            color: 0xffffff,
+            program: function(context) {
+
+                context.beginPath();
+                context.arc(0, 0, 1, 0, PI2, true);
+                context.fill();
+
+            }
+
+        });
+
+        var i = 0;
+
+        for (var ix = 0; ix < AMOUNTX; ix++) {
+
+            for (var iy = 0; iy < AMOUNTY; iy++) {
+
+                particle = particles[i++] = new THREE.Particle(material);
+                particle.position.x = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2);
+                particle.position.z = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2);
+                scene.add(particle);
+
+            }
+
+        }
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        $('.box').append(renderer.domElement);
+
+        animate();
+    }
+
+    function animate() {
+
+        animaterequest = requestAnimationFrame(animate);
+
+        render();
+
+
+
+
+    }
+
+
+
+    function render() {
+
+        camera.position.x += (mouseX - camera.position.x) * .05;
+        camera.position.y += (-mouseY - camera.position.y) * .05;
+        camera.lookAt(scene.position);
+
+        var i = 0;
+
+        for (var ix = 0; ix < AMOUNTX; ix++) {
+
+            for (var iy = 0; iy < AMOUNTY; iy++) {
+
+                particle = particles[i++];
+                particle.position.y = (Math.sin((ix + count) * 0.3) * 50) + (Math.sin((iy + count) * 0.5) * 50);
+                particle.scale.x = particle.scale.y = (Math.sin((ix + count) * 0.3) + 1) * 2 + (Math.sin((iy + count) * 0.5) + 1) * 2;
+
+            }
+
+        }
+
+        renderer.render(scene, camera);
+
+        count += 0.1;
+
+    }
+</script>
+
+<script>
+    window.onload = function() {
+        shouye('home');
+    }
+</script>
+
 
 </html>
