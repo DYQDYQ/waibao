@@ -169,6 +169,7 @@
             text-align: center;
             display: none;
             width: 100%;
+            margin-top: 10%;
         }
         
         .yunying {
@@ -211,7 +212,7 @@
             position: absolute;
             top: -100%;
             left: 0px;
-            width: 100%;
+            width: 70%;
             padding: 0px 20px;
         }
         
@@ -316,12 +317,58 @@
                 top: 40px;
             }
         }
+
+        .linebox {
+            position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 99;
+    top: 0px;
+    
+    display: none;
+        }
+
+        .linebox div {
+            width: 100px;
+            height: calc(100% / 5);
+            border-bottom: 3px solid red;
+            margin-left: 100%;
+        }
+
+        .movetoleft {
+            animation: toleft 2s 1;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+        
+
+        @keyframes toleft {
+            0% {
+                margin-left: 100%;
+            }
+            100% {
+                margin-left: -10%;
+            }
+        }
+        @-webkit-keyframes toleft {
+            0% {
+                margin-left: 100%;
+            }
+            100% {
+                margin-left: -10%;
+            }
+        }
         
         .movedown {
             animation: down 1s 1;
             animation-fill-mode: forwards;
         }
-        
+
+
+ 
         @keyframes down {
             0% {
                 top: -100%;
@@ -364,6 +411,16 @@
             left: 0px;
             width: 100%;
             height: 100%;
+            z-index: 11;
+            background: #fff;
+        }
+
+        #newbox {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
             z-index: 10;
             background: #fff;
         }
@@ -375,6 +432,11 @@
             width: 100%;
             height: 100%;
             z-index: 10;
+        }
+
+        .changeposition {
+            left: 30% !important;
+            top: 0% !important;
         }
     </style>
 </head>
@@ -573,6 +635,18 @@
     <div id="particles-js"></div>
     <div class="box"></div>
 
+    <div id="newbox">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="linebox">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
 
 </body>
 
@@ -582,32 +656,40 @@
 <script>
     var time = 0;
 
+    var newname = '';
+    var dashLength = 100;
+    
     function shouye(name) {
 
-        RENDERER.setupFigure();
-
+        newname = name;
         if (name != 'home') {
             $('#particles-js').fadeOut(1000)
         } else {
             $('#particles-js').fadeIn(1000)
+            
+            
+        }
+        // $('#newbox').fadeOut(500)
+        $('.linebox').fadeOut();
+
+        if($('#newbox').hasClass('changeposition')){
+            $('#newbox').removeClass('changeposition');
+        }
+        if($('.line').hasClass('movetoleft')){
+            $('.line').removeClass('movetoleft')
         }
 
+        if(name == 'xinwen') {
+            $('#newbox').css('left','50%')
+        }else {
+            $('#newbox').css('left','0px')
+        }
+        if(name == 'shiming') {
+            $('#newbox').css('left','30%')
+            $('#newbox').css('top','-10%')
+        }
 
-
-        // if (name == 'lianxi') {
-        //     $('#particles-js').fadeOut(1000)
-        //     $('#jsi-particle-container').fadeOut(1000)
-        //     $('.box').fadeIn(1000)
-        //     if (time == 0) {
-        //         begin()
-
-        //     }
-        //     time++
-        // }
-        // if (name !== 'lianxi') {
-        //     $('.box').fadeOut(1000)
-        //     $('#jsi-particle-container').fadeIn(1000)
-        // }
+        console.log(dashLength);
         if (name == 'home') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
@@ -629,9 +711,14 @@
             $('.xinwen').fadeOut(1000)
             $('.lianxi').fadeOut(1000)
 
+            // $('#newbox').addClass('changeposition');
+            $('#newbox').fadeIn(500)
+            dashLength = 100;
             var kk = setTimeout(function() {
                 $('.shiming').fadeIn(1000)
                 $('.shiming').addClass('movedown')
+                
+                
                     // $('.shiming').snabbt('attention', {
                     //     rotation: [0, 0, 1.5 * Math.PI],
                     //     springConstant: 1.9,
@@ -646,9 +733,13 @@
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
             $('.lianxi').fadeOut(1000)
+            $('#newbox').fadeIn(500)
+            dashLength = 100;
             var tt = setTimeout(function() {
                 $('.wenhua').fadeIn(1000)
                 let ele = document.getElementById('wenhua');
+                
+                
                 // $('.wenhua').snabbt({
                 //     position: [100, 0, 0],
                 //     rotation: [0, 0, 2 * Math.PI],
@@ -664,17 +755,20 @@
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
             $('.lianxi').fadeOut(1000)
+            $('.linebox').fadeIn();
+            $('.line').addClass('movetoleft')
             var tt = setTimeout(function() {
+                
                 $('.yunying').fadeIn(1000)
                 $('.yunying').addClass('moveright')
-                let ele = document.getElementById('yunying');
+                
                 // $('.yunying').snabbt({
                 //     rotation: [0, 2 * Math.PI, 0],
                 //     transformOrigin: [$('.yunying').clientWidth / 2, 0, 0],
                 //     delay: 1000
                 // })
 
-            }, 1000)
+            }, 2000)
         } else if (name == 'xinwen') {
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
@@ -683,6 +777,8 @@
             $('.xinwen').fadeOut(1000)
             $('.lianxi').fadeOut(1000)
             $('.xinwen').fadeIn(1000)
+            $('#newbox').fadeIn(500)
+            dashLength = 100;
             $('.xinwen').addClass('moverightdown')
         } else if (name == 'lianxi') {
             $('.shouye').fadeOut(1000)
@@ -691,6 +787,8 @@
             $('.yunying').fadeOut(1000)
             $('.xinwen').fadeOut(1000)
             $('.lianxi').fadeOut(1000)
+            $('#newbox').fadeIn(500)
+            dashLength = 100;
             var tt = setTimeout(function() {
                 $('.lianxi').fadeIn(1000)
                 $('.lianxi').addClass('moveup')
@@ -981,7 +1079,7 @@
         }
     };
     $(function() {
-        RENDERER.init(STRATEGY);
+        // RENDERER.init(STRATEGY);
     });
 </script>
 
@@ -1093,11 +1191,130 @@
     }
 </script>
 
+
+
 <script>
     window.onload = function() {
         shouye('home');
     }
 </script>
+
+<script>
+        
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext('2d');
+        W = canvas.width = window.innerWidth;   //设置 Canvas 宽度
+        H = canvas.height = window.innerHeight; //设置 Canvas 高度
+        radius = H * 0.43;                      //半径
+
+        ticks = [];
+        for(var i = 0; i <= 360; i+=5) {
+            ticks.push(i);                      //push() 向数组的末尾添加 i(5,10,15)
+        }
+
+        function toRadians (angle) {
+            return angle * (Math.PI / 180);     //angle（传参） * Math.PI （3.1415926）/ 180 = 1°
+        }
+
+        function calcPoints(){
+            points = [];
+            for(var i = 0; i < ticks.length; i++) {
+                points.push([
+                    W/2 + Math.cos(toRadians(ticks[i])) * radius, //Math.cos(x) x余弦值。返回的是 -1.0 到 1.0 之间的数；
+                    H/2 + Math.sin(toRadians(ticks[i])) * radius  //Math.sin(x) x正玄值。返回值在 -1.0 到 1.0 之间；
+                ]);
+            };
+        };
+
+        function drawHeart(dashL, dashO){
+            console.log(dashL)
+            context.beginPath();                //开始绘制路径
+            context.lineWidth = 1.2;            //线条宽度
+            context.setLineDash([dashL,dashO]); //缓冲设置
+            context.strokeStyle = 'rgba(246,70,95,.3)';    //线条颜色
+            //第一部分绘制路径动画
+
+            //前半部
+            offset = 18;
+
+            // for(var i=18; i>=0; i--) {
+            //     context.moveTo(points[i][1], points[i][0]);
+            //     context.lineTo(points[i+offset][1], points[i+offset][0]);
+            // }
+
+            if(newname == 'shiming') {
+                // for(var i=18; i >= 0; i--) {
+                //     context.moveTo(points[i][1], points[i][0]);
+                //     context.lineTo(points[i+offset][0], points[i+offset][1]);
+                // }
+                for(var i=0; i<=18; i++) {
+                    context.moveTo(points[i][0], points[i][1]);
+                    context.lineTo(points[i+offset][1], points[i+offset][0]);
+                }
+            }
+
+            // for(var i=0; i<=18; i++) {
+            //         context.moveTo(points[i][0], points[i][1]);
+            //         context.lineTo(points[i+offset][0], points[i+offset][1]);
+            //     }
+            //后半部
+            if(newname == 'wenhua' || newname== 'lianxi') {
+            for(var i=36; i<=54; i++) {
+                context.moveTo(points[i][0], points[i][1]);
+                context.lineTo(points[i+offset][0], points[i+offset][1]);
+            }
+            }
+          
+            //第二部分绘制路径动画
+
+            //前半部
+            offset = 20;
+            if(newname == 'yunying1') {
+            for(var i=18; i<36; i++) {
+                context.moveTo(points[i][0], points[i][1]);
+                context.lineTo(points[i+offset][0], points[i+offset][1]);
+                offset++;
+            }
+            }
+          
+            //后半部
+            offset = 20;
+            if(newname == 'xinwen' || newname== 'lianxi') {
+                for(var i=54; i>36; i--) {
+                    context.moveTo(points[i][0], points[i][1]);
+                    context.lineTo(points[i-offset][0], points[i-offset][1]);
+                    offset++;
+                }
+            }
+
+
+            context.stroke();       //绘制当前路径
+            context.closePath();    //关闭路径
+        }
+
+            calcPoints();
+            update();
+
+        var dashOffset = 100; 
+        function update() {
+            if(dashLength < 650){
+                dashLength += 2;
+                context.clearRect(0,0,W,H);
+                drawHeart(dashLength, dashOffset);
+            }
+            window.requestAnimationFrame(update);     //绘制动画
+        }
+
+        //监听浏览器可视窗口改变时执行
+        window.addEventListener('resize', function(e) {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            radius = H * 0.45;
+            context.clearRect(0,0,W,H);
+            calcPoints();
+            drawHeart();
+        }, false);
+    </script>
 
 
 </html>

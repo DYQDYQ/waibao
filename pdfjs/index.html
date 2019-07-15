@@ -1,16 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdnjs.com/libraries/pdf.js"></script>
+    <title>心形动画</title>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            position: absolute;
+            -webkit-transform: rotateZ(90deg);
+               -moz-transform: rotateZ(90deg);
+                -ms-transform: rotateZ(90deg);
+                 -o-transform: rotateZ(90deg);
+                    transform: rotateZ(90deg);
+        }
+    </style>
 </head>
-
 <body>
+    <canvas id="canvas"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext('2d');
+        W = canvas.width = window.innerWidth;   //设置 Canvas 宽度
+        H = canvas.height = window.innerHeight; //设置 Canvas 高度
+        radius = H * 0.43;                      //半径
 
+        ticks = [];
+        for(var i = 0; i <= 360; i+=5) {
+            ticks.push(i);                      //push() 向数组的末尾添加 i(5,10,15)
+        }
+
+        function toRadians (angle) {
+            return angle * (Math.PI / 180);     //angle（传参） * Math.PI （3.1415926）/ 180 = 1°
+        }
+
+        function calcPoints(){
+            points = [];
+            for(var i = 0; i < ticks.length; i++) {
+                points.push([
+                    W/2 + Math.cos(toRadians(ticks[i])) * radius, //Math.cos(x) x余弦值。返回的是 -1.0 到 1.0 之间的数；
+                    H/2 + Math.sin(toRadians(ticks[i])) * radius  //Math.sin(x) x正玄值。返回值在 -1.0 到 1.0 之间；
+                ]);
+            };
+        };
+
+        function drawHeart(dashL, dashO){
+            context.beginPath();                //开始绘制路径
+            context.lineWidth = 1.2;            //线条宽度
+            context.setLineDash([dashL,dashO]); //缓冲设置
+            context.strokeStyle = '#F6465F';    //线条颜色
+            //第一部分绘制路径动画
+
+            //前半部
+            offset = 18;
+
+            // for(var i=18; i>=0; i--) {
+            //     context.moveTo(points[i][1], points[i][0]);
+            //     context.lineTo(points[i+offset][1], points[i+offset][0]);
+            // }
+
+
+            // for(var i=0; i<=18; i++) {
+            //     context.moveTo(points[i][0], points[i][1]);
+            //     context.lineTo(points[i+offset][0], points[i+offset][1]);
+            // }
+
+            //后半部
+            // for(var i=36; i<=54; i++) {
+            //     context.moveTo(points[i][0], points[i][1]);
+            //     context.lineTo(points[i+offset][0], points[i+offset][1]);
+            // }
+          
+            //第二部分绘制路径动画
+
+            //前半部
+            offset = 20;
+            for(var i=18; i<36; i++) {
+                context.moveTo(points[i][0], points[i][1]);
+                context.lineTo(points[i+offset][0], points[i+offset][1]);
+                offset++;
+            }
+          
+            //后半部
+            // offset = 20;
+            // for(var i=54; i>36; i--) {
+            //     context.moveTo(points[i][0], points[i][1]);
+            //     context.lineTo(points[i-offset][0], points[i-offset][1]);
+            //     offset++;
+            // }
+            context.stroke();       //绘制当前路径
+            context.closePath();    //关闭路径
+        }
+
+        calcPoints();
+        update();
+
+        var dashLength = 100;
+        var dashOffset = 100; 
+        function update() {
+            if(dashLength < 650){
+                dashLength += 2;
+                context.clearRect(0,0,W,H);
+                drawHeart(dashLength, dashOffset);
+            }
+            window.requestAnimationFrame(update);     //绘制动画
+        }
+
+        //监听浏览器可视窗口改变时执行
+        window.addEventListener('resize', function(e) {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            radius = H * 0.45;
+            context.clearRect(0,0,W,H);
+            calcPoints();
+            drawHeart();
+        }, false);
+    </script>
 </body>
-
 </html>
