@@ -408,6 +408,7 @@
             height: 100%;
             z-index: 11;
             background: #fff;
+            transform:scale(0,0)
         }
         
         #newbox {
@@ -752,10 +753,63 @@
         .jupiter .shadow {
             animation: shadow 50s infinite linear;
         }
+
+        .homeopen {
+            animation: open 5s 1 linear;
+            animation-fill-mode: forwards;
+            
+        }
+
+        @keyframes open {
+            0% {
+                transform:scale(0,0)
+            }
+            100% {
+                transform:scale(1,1)
+            }
+        }
+
+        .heidong {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            z-index: 999999;
+            top: 0px;
+            left: 0px;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .heidong img {
+            height: 100%;
+            width: auto;
+        }
+
+        .ani {
+            animation: myfirst 4s;
+            transform: rotateX(0deg);
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes myfirst {
+            from {
+                transform: scale(2) rotate(0deg);
+            }
+            to {
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
     </style>
 </head>
 
 <body>
+
+    <div class="heidong">
+            <img class="ani" src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/yunying/blackhole/img/blackhole2019_pc.png"
+            overflow: hidden;/>
+    </div>
     <div class="company">
         川仁餐饮管理有限责任公司
     </div>
@@ -776,6 +830,15 @@
 
     </div>
     <div class="boxbody">
+
+
+            <div class="sunpoition" style="position:absolute;right:28%;top:25%;display:none">
+                    <div class="sun" >
+                            <div class="star" style="background: url(./img/earth.png) no-repeat;background-size: cover;"></div>
+                        </div>
+            </div>
+
+            
 
         <div id="shouyeID" class="shouye">
             <div class="shouyeitem theme-5">
@@ -815,7 +878,9 @@
             </div>
         </div>
 
-        <div class="shiming">
+        <div class="shiming" style="position:relative">
+            
+                
             <p style="font-size: 28px;">我们是川仁家人</p>
             <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br /> 在我们值得夸耀的未来，川仁家人敢为行业先驱，倡导健康饮食理念，缔造健康饮食标杆。</p>
             <p>
@@ -1034,6 +1099,8 @@
             $('#newbox').css('top', '-10%')
         }
 
+        $(".sunpoition").fadeOut();
+
         console.log(dashLength);
         if (name == 'home') {
             $('.shouye').fadeOut(1000)
@@ -1048,7 +1115,7 @@
 
 
         } else if (name == 'shiming') {
-
+            $(".sunpoition").fadeIn(1000);
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
@@ -1149,6 +1216,10 @@
 <script>
     window.onload = function() {
         shouye('home');
+        setTimeout(function(){
+            $('#particles-js').addClass('homeopen');
+            $(".heidong").css('display','none');
+        },4000)
     }
 </script>
 
@@ -1183,7 +1254,7 @@
         context.beginPath(); //开始绘制路径
         context.lineWidth = 1.2; //线条宽度
         context.setLineDash([dashL, dashO]); //缓冲设置
-        context.strokeStyle = 'rgba(204,204,204,.8)'; //线条颜色
+        context.strokeStyle = 'rgba(204,204,204,1)'; //线条颜色
         //第一部分绘制路径动画
 
         //前半部
