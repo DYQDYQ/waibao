@@ -60,11 +60,8 @@
         }
         
         .company {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
             font-size: 24px;
+            font-weight: 400;
         }
         
         .boxbody {
@@ -90,11 +87,17 @@
         .head {
             display: flex;
             position: absolute;
-            flex-direction: row;
             z-index: 9999;
-            right: 20px;
-            top: 10px;
+            right: 0px;
+            top: 0px;
             color: #000;
+            justify-content: space-between;
+            width: 100%;
+            height: 60px;
+            padding: 0px 50px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 1px 6px #ddd;
+            font-size: 1.4rem;
         }
         
         .head .headline {
@@ -112,7 +115,7 @@
             /* justify-content: center; */
             position: absolute;
             left: 0%;
-            flex-direction: row-reverse;
+            flex-direction: row;
             width: 100%;
             height: 100%;
             padding: 0px 75px;
@@ -120,23 +123,29 @@
         }
 
         .shouyeitemopen {
-            animation: openshou 3s 1;
+            animation: openshou 2.5s 1;
             animation-fill-mode: forwards
         }
 
         @keyframes openshou {
             0% {
+                opacity: 0;
                 transform: scale(0,0) rotateX(-900deg);
             }
+            80% {
+                opacity: 1;
+                transform: scale(1.5,1.5) rotateX(0deg);
+            }
             100% {
+                opacity: 1;
                 transform: scale(1,1) rotateX(0deg);
             }
         }
         
         
         .shouye .shouyeitem {
-            width: 310px;
-            padding: 0 30px;
+            width: 270px;
+            padding: 0 20px;
             box-sizing: border-box;
             text-align: center;
             transform: scale(0,0);
@@ -144,7 +153,7 @@
         
         .shouye .shouyeitem .title {
             font-size: 28px;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 10px;
         }
         
@@ -161,7 +170,7 @@
         }
         
         .shouye .shouyeitem .lookbutton {
-            width: 250px;
+            width: 100%;
             height: 40px;
             font-size: 18px;
             border: 1px solid #000;
@@ -295,7 +304,7 @@
         }
         
         .moverightdown {
-            animation: myrightdown 3s 1;
+            animation: myrightdown 1s 1;
             animation-fill-mode: forwards;
         }
         
@@ -304,7 +313,7 @@
                 top: -100%;
             }
             100% {
-                top: 40px;
+                top: 60px;
             }
         }
         
@@ -313,7 +322,7 @@
                 top: -100%;
             }
             100% {
-                top: 40px;
+                top: 60px;
             }
         }
         
@@ -427,14 +436,14 @@
         #particles-js {
             position: absolute;
             top: 0px;
-            left: 0px;
+            right: 0px;
             width: 100%;
             height: 100%;
             z-index: 11;
             background: #fff;
             background-image: url('./img/bac.png');
-            background-size: auto;
-            background-position: 0% 0%;
+            background-size: auto 90%;
+            background-position: 106% 44%;
             background-repeat: no-repeat;
         }
         
@@ -468,13 +477,38 @@
             font-size: 62.5%;
         }
         .homeicon {
-            text-shadow: 0px 0px 2px #444, 1px 1px 4px rgba(0,0,0,0.7);
+            /* text-shadow: 0px 0px 2px #444, 1px 1px 4px rgba(0,0,0,0.7); */
             color: #444;
             font-size: 8rem;
+        }
+        .homeicon span:nth-child(8) {
+            margin-right: 30px
+        }
+        .homeicon span:nth-child(9) {
+            font-size:8rem;color:#da3915
+        }
+        .homeicon span:nth-child(10) {
+            font-size: 8rem;color:#fff462
+        }
+        .homeicon span:nth-child(11) {
+            font-size: 8rem;color:#f18e38
+        }
+        .homeicon span:nth-child(12) {
+            font-size: 8rem;color:#065a77
+        }
+        .homeicon span:nth-child(13) {
+            font-size: 8rem;color:#7eed4d
+        }
+        .homeicon span:nth-child(14) {
+            font-size: 8rem;color:#008cb4
         }
         .logozhimu {
             display: none;
             font-size: 1.8rem;
+        }
+        .tagline span {
+            display: inline-block;
+            float: left;
         }
     </style>
 </head>
@@ -483,7 +517,22 @@
 
     <div class="loadings" style="position:absolute;width:100%;height:100%;z-index:12;display:flex;    justify-content: center;
     align-items: center;background:#fff">
-        <p class="tagline homeicon">CHUANREN CANYIN</p>
+        <p class="tagline homeicon" >
+            <span style="font-size: 8rem;">C</span>
+            <span style="font-size: 8rem;">H</span>
+            <span style="font-size: 8rem;">U</span>
+            <span style="font-size: 8rem;">A</span>
+            <span style="font-size: 8rem;">N</span>
+            <span style="font-size: 8rem;">R</span>
+            <span style="font-size: 8rem;">E</span>
+            <span style="font-size: 8rem;">N</span>
+                <span>C</span>
+                <span >A</span>
+                <span >N</span>
+                <span >Y</span>
+                <span >I</span>
+                <span >N</span>
+            </p>
         
     </div>
     <div id="particles-js"></div>
@@ -492,24 +541,27 @@
     <div class="head">
             <div class="company">
                     川仁餐饮管理有限责任公司
-                    <p class="logozhimu">CHUANREN CANYIN</p>
-            
-                    
+                    <p class="logozhimu">CHUANREN CANYIN
+                        
+                        </p>
                 </div>
-        <div>
+        <div style="display: flex;
+        height: 60px;
+        justify-content: center;
+        align-items: center;"> 
 
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
-        </div>
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('shiming')">企业使命
-        </div>
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('wenhua')">川仁文化
-        </div>
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('yunying')">品牌运营
-        </div>
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('xinwen')">川仁新闻
-        </div>
-        <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('lianxi')">合作联系
-        </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
+            </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('shiming')">企业使命
+            </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('wenhua')">川仁文化
+            </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('yunying')">品牌运营
+            </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('xinwen')">川仁新闻
+            </div>
+            <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('lianxi')">合作联系
+            </div>
     </div>
     
 
@@ -956,13 +1008,13 @@
     }
 
     function beginanimation(){
-        $(".tagline").letterfx({"fx":"fly-left fly-top spin","backwards":true,"letter_end":"stay","timing":300,'fx_duration':'3s'});
+        $(".tagline").letterfx({"fx":"fly-left fly-top spin","backwards":true,"letter_end":"stay","timing":120,'fx_duration':'2s'});
         setTimeout(function(){
             $(".tagline").css('visibility','hidden')
             $('.logozhimu').fadeIn(1000)
             $('.shouyeitem').addClass('shouyeitemopen')
-            $('.loadings').fadeOut(3000)
-        },4400)
+            $('.loadings').fadeOut(1600)
+        },1800)
         // setTimeout(function(){
         //     $('.loadings').fadeOut(100);
         // })
@@ -976,7 +1028,7 @@
         setTimeout(function(){
             beginanimation();
             
-        },1000)
+        },600)
 
     }
 
@@ -996,7 +1048,10 @@
             $('.shouyeitem').removeClass('shouyeitemopen')
 
             
+            setTimeout(function(){
             beginanimation();
+            
+        },600)
     }
 </script>
 
