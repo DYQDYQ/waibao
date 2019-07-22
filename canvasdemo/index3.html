@@ -16,12 +16,6 @@
     <link rel="stylesheet" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/lineAnimation.css">
 
-
-
-    <link href="css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
-    
-    <link href="css/demo.css" rel="stylesheet" type="text/css" />
-
     <style>
         html,
         body {
@@ -109,37 +103,19 @@
         .shouye {
             display: flex;
             align-items: center;
-            /* justify-content: center; */
+            justify-content: center;
             position: absolute;
-            left: 0%;
-            flex-direction: row-reverse;
+            left: -100%;
+            flex-direction: row;
             width: 100%;
             height: 100%;
-            padding: 0px 75px;
-           
         }
-
-        .shouyeitemopen {
-            animation: openshou 3s 1;
-            animation-fill-mode: forwards
-        }
-
-        @keyframes openshou {
-            0% {
-                transform: scale(0,0) rotateX(-900deg);
-            }
-            100% {
-                transform: scale(1,1) rotateX(0deg);
-            }
-        }
-        
         
         .shouye .shouyeitem {
             width: 310px;
             padding: 0 30px;
             box-sizing: border-box;
             text-align: center;
-            transform: scale(0,0);
         }
         
         .shouye .shouyeitem .title {
@@ -432,10 +408,7 @@
             height: 100%;
             z-index: 11;
             background: #fff;
-            background-image: url('./img/bac.png');
-            background-size: auto;
-            background-position: 0% 0%;
-            background-repeat: no-repeat;
+            transform:scale(0,0)
         }
         
         #newbox {
@@ -446,7 +419,6 @@
             height: 100%;
             z-index: 10;
             background: #fff;
-            
         }
         
         .box {
@@ -463,41 +435,385 @@
             top: 0% !important;
         }
     </style>
+
     <style>
-        html,body {
-            font-size: 62.5%;
+        @keyframes spinsun {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
         }
-        .homeicon {
-            text-shadow: 0px 0px 2px #444, 1px 1px 4px rgba(0,0,0,0.7);
-            color: #444;
-            font-size: 8rem;
+        
+        @keyframes shadow {
+            0% {
+                background-position: 130% 0%;
+            }
+            33% {
+                background-position: 50% 0%;
+            }
+            55% {
+                background-position: 0% 0%;
+            }
+            80% {
+                background-position: -50% 0%;
+            }
+            100% {
+                background-position: -50% 0%;
+            }
         }
-        .logozhimu {
-            display: none;
-            font-size: 1.8rem;
+        
+        @keyframes orbitmercury {
+            0% {
+                z-index: 2;
+                transform: rotateY(0);
+            }
+            49% {
+                z-index: 2;
+            }
+            50% {
+                z-index: -2;
+            }
+            99% {
+                z-index: -2;
+            }
+            100% {
+                z-index: 2;
+                transform: rotateY(360deg);
+            }
         }
+        
+        @keyframes orbitvenus {
+            0% {
+                z-index: 3;
+                transform: rotateY(0);
+            }
+            49% {
+                z-index: 3;
+            }
+            50% {
+                z-index: -3;
+            }
+            99% {
+                z-index: -3;
+            }
+            100% {
+                z-index: 3;
+                transform: rotateY(360deg);
+            }
+        }
+        
+        @keyframes orbitearth {
+            0% {
+                z-index: 4;
+                transform: rotateY(0);
+            }
+            49% {
+                z-index: 4;
+            }
+            50% {
+                z-index: -4;
+            }
+            99% {
+                z-index: -4;
+            }
+            100% {
+                z-index: 4;
+                transform: rotateY(360deg);
+            }
+        }
+        
+        @keyframes orbitmars {
+            0% {
+                z-index: 5;
+                transform: rotateY(0);
+            }
+            49% {
+                z-index: 5;
+            }
+            50% {
+                z-index: -5;
+            }
+            99% {
+                z-index: -5;
+            }
+            100% {
+                z-index: 5;
+                transform: rotateY(360deg);
+            }
+        }
+        
+        @keyframes orbitjupiter {
+            0% {
+                z-index: 6;
+                transform: rotateY(270);
+            }
+            49% {
+                z-index: 6;
+            }
+            50% {
+                z-index: -6;
+            }
+            99% {
+                z-index: -6;
+            }
+            100% {
+                z-index: 6;
+                transform: rotateY(360deg);
+            }
+        }
+        
+        @keyframes orbitsaturn {
+            0% {
+                z-index: 7;
+                transform: rotateY(270);
+            }
+            49% {
+                z-index: 7;
+            }
+            50% {
+                z-index: -7;
+            }
+            99% {
+                z-index: -7;
+            }
+            100% {
+                z-index: 7;
+                transform: rotateY(360deg);
+            }
+        }
+        /* Keep planet image flat */
+        
+        @keyframes anti-spin {
+            from {
+                transform: rotateY(0);
+            }
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+        
+        @keyframes anti-spin-rings {
+            from {
+                transform: rotateY(0) rotateX(73deg);
+            }
+            to {
+                transform: rotateY(-360deg) rotateX(73deg);
+            }
+        }
+        /* scene wrapper */
+        
+        .wrapper {
+            position: relative;
+            margin: 0 auto;
+            display: block;
+            margin-top: 200px;
+            perspective: 1000px;
+            perspective-origin: 60% 50%;
+            transform: rotate(-10deg);
+        }
+        
+        .wrapper>div {
+            position: relative;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            height: 0px;
+        }
+        
+        .sun {
+            width: 250px;
+            position: absolute;
+            top: 0px;
+            z-index: 1;
+            height: 125px !important;
+        }
+        
+        .sun .star {
+            width: 250px;
+            height: 250px;
+            background: url(./img/sun.png) no-repeat;
+            background-size: cover;
+            border-radius: 250px;
+            margin: 0 auto;
+            animation: spinsun 40s infinite linear;
+        }
+        
+        .planet {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            animation-iteration-count: infinite;
+            overflow: hidden;
+        }
+        
+        .shadow {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            /*background: transparent url(/uploads/1811/solar_system/shadow.png) 0% 0% no-repeat;*/
+            background-size: cover;
+            border-radius: 100%;
+        }
+        
+        .mercury {
+            position: absolute;
+            width: 400px;
+            z-index: 2;
+            animation: orbitmercury 12s infinite linear;
+            top: -7.5px;
+            /*half of planets height to keep orbits in line*/
+        }
+        
+        .mercury .planet {
+            width: 15px;
+            height: 15px;
+            background-image: url(./img/mercury.png);
+            animation: anti-spin 12s infinite linear;
+        }
+        
+        .mercury .shadow {
+            animation: shadow 12s infinite linear;
+        }
+        
+        .venus {
+            position: absolute;
+            width: 506px;
+            z-index: 3;
+            animation: orbitvenus 15s infinite linear;
+            top: -19px;
+        }
+        
+        .venus .planet {
+            width: 38px;
+            height: 38px;
+            background-image: url(./img/venus.png);
+            animation: anti-spin 15s infinite linear;
+        }
+        
+        .venus .shadow {
+            animation: shadow 15s infinite linear;
+        }
+        
+        .earth {
+            position: absolute;
+            width: 610px;
+            z-index: 4;
+            animation: orbitearth 20s infinite linear;
+            top: -20px;
+        }
+        
+        .earth .planet {
+            width: 40px;
+            height: 40px;
+            background-image: url(./img/earth.png);
+            animation: anti-spin 20s infinite linear;
+        }
+        
+        .earth .shadow {
+            animation: shadow 20s infinite linear;
+        }
+        
+        .mars {
+            position: absolute;
+            width: 706px;
+            z-index: 5;
+            animation: orbitmars 30s infinite linear;
+            top: -11px;
+        }
+        
+        .mars .planet {
+            width: 22px;
+            height: 22px;
+            background-image: url(./img/mars.png);
+            animation: anti-spin 30s infinite linear;
+        }
+        
+        .mars .shadow {
+            animation: shadow 30s infinite linear;
+        }
+        
+        .jupiter {
+            position: absolute;
+            width: 1100px;
+            z-index: 6;
+            animation: orbitjupiter 50s infinite linear;
+            top: -64px;
+        }
+        
+        .jupiter .planet {
+            width: 128px;
+            height: 128px;
+            background-image: url(./img/jupiter.png);
+            animation: anti-spin 50s infinite linear;
+        }
+        
+        .jupiter .shadow {
+            animation: shadow 50s infinite linear;
+        }
+
+        .homeopen {
+            animation: open 5s 1 linear;
+            animation-fill-mode: forwards;
+            
+        }
+
+        @keyframes open {
+            0% {
+                transform:scale(0,0)
+            }
+            100% {
+                transform:scale(1,1)
+            }
+        }
+
+        .heidong {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            z-index: 999999;
+            top: 0px;
+            left: 0px;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .heidong img {
+            height: 100%;
+            width: auto;
+        }
+
+        .ani {
+            animation: myfirst 4s;
+            transform: rotateX(0deg);
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes myfirst {
+            from {
+                transform: scale(2) rotate(0deg);
+            }
+            to {
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="loadings" style="position:absolute;width:100%;height:100%;z-index:12;display:flex;    justify-content: center;
-    align-items: center;background:#fff">
-        <p class="tagline homeicon">CHUANREN CANYIN</p>
-        
+    <div class="heidong">
+            <img class="ani" src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/yunying/blackhole/img/blackhole2019_pc.png"
+            overflow: hidden;/>
     </div>
-    <div id="particles-js"></div>
-
-    
+    <div class="company">
+        川仁餐饮管理有限责任公司
+    </div>
     <div class="head">
-            <div class="company">
-                    川仁餐饮管理有限责任公司
-                    <p class="logozhimu">CHUANREN CANYIN</p>
-            
-                    
-                </div>
-        <div>
-
         <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
         </div>
         <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('shiming')">企业使命
@@ -510,12 +826,17 @@
         </div>
         <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('lianxi')">合作联系
         </div>
-    </div>
-    
 
 
     </div>
     <div class="boxbody">
+
+
+            <div class="sunpoition" style="position:absolute;right:28%;top:25%;display:none">
+                    <div class="sun" >
+                            <div class="star" style="background: url(./img/earth.png) no-repeat;background-size: cover;"></div>
+                        </div>
+            </div>
 
             
 
@@ -688,8 +1009,41 @@
 
     <div id="jsi-particle-container" class="container1"></div>
 
-    >
-    <!-- <div class="box"></div> -->
+
+    <!-- particles.js container -->
+    <div id="particles-js">
+        <ul class="wrapper">
+            <div class="sun">
+                <div class="star"></div>
+            </div>
+            <div class="mercury">
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="venus">
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="earth">
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="mars">
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="jupiter">
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="box"></div>
 
     <div id="newbox">
         <canvas id="canvas"></canvas>
@@ -706,120 +1060,8 @@
 
 </body>
 
-<script src="js/particles.min.js"></script>
-<script src="js/app.js"></script>
-
+<script src="js/fastclick.js"></script>
 <script src="js/snabbt.min.js"></script>
-
-<script>
-        var SEPARATION = 100,
-            AMOUNTX = 15,
-            AMOUNTY = 15;
-    
-        var container;
-        var camera, scene, renderer;
-    
-        var particles, particle, count = 0;
-    
-        var mouseX = 0,
-            mouseY = 0;
-    
-        var windowHalfX = window.innerWidth / 2;
-        var windowHalfY = window.innerHeight / 2;
-    
-        var animaterequest;
-    
-        function begin() {
-    
-    
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-            camera.position.z = 1000;
-    
-            scene = new THREE.Scene();
-    
-            particles = new Array();
-    
-            var PI2 = Math.PI * 2;
-            var material = new THREE.ParticleCanvasMaterial({
-    
-                color: 0xffffff,
-                program: function(context) {
-    
-                    context.beginPath();
-                    context.arc(0, 0, 1, 0, PI2, true);
-                    context.fill();
-    
-                }
-    
-            });
-    
-            var i = 0;
-    
-            for (var ix = 0; ix < AMOUNTX; ix++) {
-    
-                for (var iy = 0; iy < AMOUNTY; iy++) {
-    
-                    particle = particles[i++] = new THREE.Particle(material);
-                    particle.position.x = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2);
-                    particle.position.z = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2);
-                    scene.add(particle);
-    
-                }
-    
-            }
-            renderer = new THREE.CanvasRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            $('.box').append(renderer.domElement);
-    
-            animate();
-        }
-    
-        function animate() {
-    
-            animaterequest = requestAnimationFrame(animate);
-    
-            render();
-    
-    
-    
-    
-        }
-    
-    
-    
-        function render() {
-    
-            camera.position.x += (mouseX - camera.position.x) * .05;
-            camera.position.y += (-mouseY - camera.position.y) * .05;
-            camera.lookAt(scene.position);
-    
-            var i = 0;
-    
-            for (var ix = 0; ix < AMOUNTX; ix++) {
-    
-                for (var iy = 0; iy < AMOUNTY; iy++) {
-    
-                    particle = particles[i++];
-                    particle.position.y = (Math.sin((ix + count) * 0.3) * 50) + (Math.sin((iy + count) * 0.5) * 50);
-                    particle.scale.x = particle.scale.y = (Math.sin((ix + count) * 0.3) + 1) * 2 + (Math.sin((iy + count) * 0.5) + 1) * 2;
-    
-                }
-    
-            }
-    
-            renderer.render(scene, camera);
-    
-            count += 0.1;
-    
-        }
-    </script>
-
-<script src="js/tuxsudo.min.js"></script>
-
-<script src="js/jquery-letterfx.js"></script>
-
-
-
 
 <script>
     var time = 0;
@@ -837,6 +1079,7 @@
 
 
         }
+        // $('#newbox').fadeOut(500)
         $('.linebox').fadeOut();
 
         if ($('#newbox').hasClass('changeposition')) {
@@ -856,13 +1099,23 @@
             $('#newbox').css('top', '-10%')
         }
 
+        $(".sunpoition").fadeOut();
 
+        console.log(dashLength);
         if (name == 'home') {
-            homepage()
-            // $('.shouye').fadeIn(1000)
+            $('.shouye').fadeOut(1000)
+            $('.shiming').fadeOut(1000)
+            $('.wenhua').fadeOut(1000)
+            $('.yunying').fadeOut(1000)
+            $('.xinwen').fadeOut(1000)
+            $('.lianxi').fadeOut(1000)
+            $('.shouye').fadeIn(1000)
+            $('#particles-js').fadeIn(1000)
+            $('.shouye').addClass('movein')
 
 
         } else if (name == 'shiming') {
+            $(".sunpoition").fadeIn(1000);
             $('.shouye').fadeOut(1000)
             $('.shiming').fadeOut(1000)
             $('.wenhua').fadeOut(1000)
@@ -954,49 +1207,19 @@
             }, 1000)
         }
     }
-
-    function beginanimation(){
-        $(".tagline").letterfx({"fx":"fly-left fly-top spin","backwards":true,"letter_end":"stay","timing":300,'fx_duration':'3s'});
-        setTimeout(function(){
-            $(".tagline").css('visibility','hidden')
-            $('.logozhimu').fadeIn(1000)
-            $('.shouyeitem').addClass('shouyeitemopen')
-            $('.loadings').fadeOut(3000)
-        },4400)
-        // setTimeout(function(){
-        //     $('.loadings').fadeOut(100);
-        // })
-    }
 </script>
+
+
 
 
 
 <script>
     window.onload = function() {
+        shouye('home');
         setTimeout(function(){
-            beginanimation();
-            
-        },1000)
-
-    }
-
-    function homepage(){
-        
-            $('.shiming').fadeOut(1000)
-            $('.wenhua').fadeOut(1000)
-            $('.yunying').fadeOut(1000)
-            $('.xinwen').fadeOut(1000)
-            $('.lianxi').fadeOut(1000)
-            $('.shouye').fadeIn(100)
-
-            $('.loadings').css('display','flex')
-            
-            $(".tagline").css('visibility','visible')
-            $('.logozhimu').css('display','none')
-            $('.shouyeitem').removeClass('shouyeitemopen')
-
-            
-            beginanimation();
+            $('#particles-js').addClass('homeopen');
+            $(".heidong").css('display','none');
+        },4000)
     }
 </script>
 

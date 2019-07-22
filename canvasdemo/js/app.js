@@ -16,23 +16,23 @@ particlesJS('particles-js',
     {
         "particles": {
             "number": {
-                "value": 80,
+                "value": 30,
                 "density": {
                     "enable": true,
                     "value_area": 800
                 }
             },
             "color": {
-                "value": "#b61924"
+                "value": "#000"
             },
             "shape": {
                 "type": "circle",
                 "stroke": {
                     "width": 0,
-                    "color": "#b61924"
+                    "color": "#000"
                 },
                 "polygon": {
-                    "nb_sides": 5
+                    "nb_sides": 2
                 },
                 "image": {
                     "src": "img/github.svg",
@@ -41,7 +41,7 @@ particlesJS('particles-js',
                 }
             },
             "opacity": {
-                "value": 0.5,
+                "value": 0.3,
                 "random": false,
                 "anim": {
                     "enable": false,
@@ -51,11 +51,11 @@ particlesJS('particles-js',
                 }
             },
             "size": {
-                "value": 5,
+                "value": 3,
                 "random": true,
                 "anim": {
                     "enable": false,
-                    "speed": 40,
+                    "speed": 10,
                     "size_min": 0.1,
                     "sync": false
                 }
@@ -63,13 +63,13 @@ particlesJS('particles-js',
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#b61924",
+                "color": "#000",
                 "opacity": 0.4,
                 "width": 1
             },
             "move": {
                 "enable": true,
-                "speed": 6,
+                "speed": 2,
                 "direction": "none",
                 "random": false,
                 "straight": false,
@@ -122,7 +122,7 @@ particlesJS('particles-js',
         "retina_detect": true,
         "config_demo": {
             "hide_card": false,
-            "background_color": "#b61924",
+            "background_color": "#000",
             "background_image": "",
             "background_position": "50% 50%",
             "background_repeat": "no-repeat",
