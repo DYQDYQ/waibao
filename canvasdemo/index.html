@@ -19,7 +19,7 @@
 
 
     <link href="css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
-    
+
     <link href="css/demo.css" rel="stylesheet" type="text/css" />
 
     <style>
@@ -62,6 +62,7 @@
         .company {
             font-size: 24px;
             font-weight: 400;
+            font-family: 'JiantiMao'
         }
         
         .boxbody {
@@ -118,37 +119,35 @@
             flex-direction: row;
             width: 100%;
             height: 100%;
-            padding: 0px 75px;
-           
+            padding: 0px 8%;
         }
-
+        
         .shouyeitemopen {
             animation: openshou 2.5s 1;
             animation-fill-mode: forwards
         }
-
+        
         @keyframes openshou {
             0% {
                 opacity: 0;
-                transform: scale(0,0) rotateX(-900deg);
+                transform: scale(0, 0) rotateX(-900deg);
             }
             80% {
                 opacity: 1;
-                transform: scale(1.5,1.5) rotateX(0deg);
+                transform: scale(1.5, 1.5) rotateX(0deg);
             }
             100% {
                 opacity: 1;
-                transform: scale(1,1) rotateX(0deg);
+                transform: scale(1, 1) rotateX(0deg);
             }
         }
-        
         
         .shouye .shouyeitem {
             width: 270px;
             padding: 0 20px;
             box-sizing: border-box;
             text-align: center;
-            transform: scale(0,0);
+            transform: scale(0, 0);
         }
         
         .shouye .shouyeitem .title {
@@ -257,6 +256,11 @@
             width: 100%;
         }
         
+        .lianxi p {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
         .movein {
             animation: mymove 3s 1;
             animation-fill-mode: forwards;
@@ -336,7 +340,7 @@
                 top: 100%;
             }
             100% {
-                top: 40px;
+                top: 240px;
             }
         }
         
@@ -345,7 +349,7 @@
                 top: 100%;
             }
             100% {
-                top: 40px;
+                top: 240px;
             }
         }
         
@@ -443,7 +447,7 @@
             background: #fff;
             background-image: url('./img/bac.png');
             background-size: auto 90%;
-            background-position: 106% 44%;
+            background-position: 90% 44%;
             background-repeat: no-repeat;
         }
         
@@ -455,7 +459,6 @@
             height: 100%;
             z-index: 10;
             background: #fff;
-            
         }
         
         .box {
@@ -473,39 +476,70 @@
         }
     </style>
     <style>
-        html,body {
+        html,
+        body {
             font-size: 62.5%;
         }
+        
+        @font-face {
+            font-family: '汉仪旗黑-35S';
+            src: url('css/fonts/HYQiHei-35S.otf') format("opentype");
+        }
+        
+        @font-face {
+            font-family: 'JiantiMao';
+            src: url('css/fonts/JiantiMao.ttf') format("opentype");
+        }
+        
         .homeicon {
             /* text-shadow: 0px 0px 2px #444, 1px 1px 4px rgba(0,0,0,0.7); */
             color: #444;
             font-size: 8rem;
         }
+        
+        .homeicon span {
+            font-family: '汉仪旗黑-35S';
+        }
+        
         .homeicon span:nth-child(8) {
             margin-right: 30px
         }
+        
         .homeicon span:nth-child(9) {
-            font-size:8rem;color:#da3915
+            font-size: 8rem;
+            color: #da3915
         }
+        
         .homeicon span:nth-child(10) {
-            font-size: 8rem;color:#fff462
+            font-size: 8rem;
+            color: #fff462
         }
+        
         .homeicon span:nth-child(11) {
-            font-size: 8rem;color:#f18e38
+            font-size: 8rem;
+            color: #f18e38
         }
+        
         .homeicon span:nth-child(12) {
-            font-size: 8rem;color:#065a77
+            font-size: 8rem;
+            color: #065a77
         }
+        
         .homeicon span:nth-child(13) {
-            font-size: 8rem;color:#7eed4d
+            font-size: 8rem;
+            color: #7eed4d
         }
+        
         .homeicon span:nth-child(14) {
-            font-size: 8rem;color:#008cb4
+            font-size: 8rem;
+            color: #008cb4
         }
+        
         .logozhimu {
             display: none;
             font-size: 1.8rem;
         }
+        
         .tagline span {
             display: inline-block;
             float: left;
@@ -517,7 +551,7 @@
 
     <div class="loadings" style="position:absolute;width:100%;height:100%;z-index:12;display:flex;    justify-content: center;
     align-items: center;background:#fff">
-        <p class="tagline homeicon" >
+        <p class="tagline homeicon">
             <span style="font-size: 8rem;">C</span>
             <span style="font-size: 8rem;">H</span>
             <span style="font-size: 8rem;">U</span>
@@ -526,29 +560,29 @@
             <span style="font-size: 8rem;">R</span>
             <span style="font-size: 8rem;">E</span>
             <span style="font-size: 8rem;">N</span>
-                <span>C</span>
-                <span >A</span>
-                <span >N</span>
-                <span >Y</span>
-                <span >I</span>
-                <span >N</span>
-            </p>
-        
+            <span>C</span>
+            <span>A</span>
+            <span>N</span>
+            <span>Y</span>
+            <span>I</span>
+            <span>N</span>
+        </p>
+
     </div>
     <div id="particles-js"></div>
 
-    
+
     <div class="head">
-            <div class="company">
-                    川仁餐饮管理有限责任公司
-                    <p class="logozhimu">CHUANREN CANYIN
-                        
-                        </p>
-                </div>
+        <div class="company">
+            川仁餐饮管理有限责任公司
+            <p class="logozhimu">CHUANREN CANYIN
+
+            </p>
+        </div>
         <div style="display: flex;
         height: 60px;
         justify-content: center;
-        align-items: center;"> 
+        align-items: center;">
 
             <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('home')">首页
             </div>
@@ -562,14 +596,14 @@
             </div>
             <div class="headline button bz-buttonAnimat clockwise horizontal" onclick="shouye('lianxi')">合作联系
             </div>
-    </div>
-    
+        </div>
+
 
 
     </div>
     <div class="boxbody">
 
-            
+
 
         <div id="shouyeID" class="shouye">
             <div class="shouyeitem theme-5">
@@ -610,8 +644,8 @@
         </div>
 
         <div class="shiming" style="position:relative">
-            
-                
+
+
             <p style="font-size: 28px;">我们是川仁家人</p>
             <p>我们因共同的梦想而携手，在梦想的征途中感动与幸福同存 <br /> 在我们值得夸耀的未来，川仁家人敢为行业先驱，倡导健康饮食理念，缔造健康饮食标杆。</p>
             <p>
@@ -764,107 +798,107 @@
 <script src="js/snabbt.min.js"></script>
 
 <script>
-        var SEPARATION = 100,
-            AMOUNTX = 15,
-            AMOUNTY = 15;
-    
-        var container;
-        var camera, scene, renderer;
-    
-        var particles, particle, count = 0;
-    
-        var mouseX = 0,
-            mouseY = 0;
-    
-        var windowHalfX = window.innerWidth / 2;
-        var windowHalfY = window.innerHeight / 2;
-    
-        var animaterequest;
-    
-        function begin() {
-    
-    
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-            camera.position.z = 1000;
-    
-            scene = new THREE.Scene();
-    
-            particles = new Array();
-    
-            var PI2 = Math.PI * 2;
-            var material = new THREE.ParticleCanvasMaterial({
-    
-                color: 0xffffff,
-                program: function(context) {
-    
-                    context.beginPath();
-                    context.arc(0, 0, 1, 0, PI2, true);
-                    context.fill();
-    
-                }
-    
-            });
-    
-            var i = 0;
-    
-            for (var ix = 0; ix < AMOUNTX; ix++) {
-    
-                for (var iy = 0; iy < AMOUNTY; iy++) {
-    
-                    particle = particles[i++] = new THREE.Particle(material);
-                    particle.position.x = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2);
-                    particle.position.z = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2);
-                    scene.add(particle);
-    
-                }
-    
+    var SEPARATION = 100,
+        AMOUNTX = 15,
+        AMOUNTY = 15;
+
+    var container;
+    var camera, scene, renderer;
+
+    var particles, particle, count = 0;
+
+    var mouseX = 0,
+        mouseY = 0;
+
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2;
+
+    var animaterequest;
+
+    function begin() {
+
+
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+
+        particles = new Array();
+
+        var PI2 = Math.PI * 2;
+        var material = new THREE.ParticleCanvasMaterial({
+
+            color: 0xffffff,
+            program: function(context) {
+
+                context.beginPath();
+                context.arc(0, 0, 1, 0, PI2, true);
+                context.fill();
+
             }
-            renderer = new THREE.CanvasRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            $('.box').append(renderer.domElement);
-    
-            animate();
-        }
-    
-        function animate() {
-    
-            animaterequest = requestAnimationFrame(animate);
-    
-            render();
-    
-    
-    
-    
-        }
-    
-    
-    
-        function render() {
-    
-            camera.position.x += (mouseX - camera.position.x) * .05;
-            camera.position.y += (-mouseY - camera.position.y) * .05;
-            camera.lookAt(scene.position);
-    
-            var i = 0;
-    
-            for (var ix = 0; ix < AMOUNTX; ix++) {
-    
-                for (var iy = 0; iy < AMOUNTY; iy++) {
-    
-                    particle = particles[i++];
-                    particle.position.y = (Math.sin((ix + count) * 0.3) * 50) + (Math.sin((iy + count) * 0.5) * 50);
-                    particle.scale.x = particle.scale.y = (Math.sin((ix + count) * 0.3) + 1) * 2 + (Math.sin((iy + count) * 0.5) + 1) * 2;
-    
-                }
-    
+
+        });
+
+        var i = 0;
+
+        for (var ix = 0; ix < AMOUNTX; ix++) {
+
+            for (var iy = 0; iy < AMOUNTY; iy++) {
+
+                particle = particles[i++] = new THREE.Particle(material);
+                particle.position.x = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2);
+                particle.position.z = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2);
+                scene.add(particle);
+
             }
-    
-            renderer.render(scene, camera);
-    
-            count += 0.1;
-    
+
         }
-    </script>
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        $('.box').append(renderer.domElement);
+
+        animate();
+    }
+
+    function animate() {
+
+        animaterequest = requestAnimationFrame(animate);
+
+        render();
+
+
+
+
+    }
+
+
+
+    function render() {
+
+        camera.position.x += (mouseX - camera.position.x) * .05;
+        camera.position.y += (-mouseY - camera.position.y) * .05;
+        camera.lookAt(scene.position);
+
+        var i = 0;
+
+        for (var ix = 0; ix < AMOUNTX; ix++) {
+
+            for (var iy = 0; iy < AMOUNTY; iy++) {
+
+                particle = particles[i++];
+                particle.position.y = (Math.sin((ix + count) * 0.3) * 50) + (Math.sin((iy + count) * 0.5) * 50);
+                particle.scale.x = particle.scale.y = (Math.sin((ix + count) * 0.3) + 1) * 2 + (Math.sin((iy + count) * 0.5) + 1) * 2;
+
+            }
+
+        }
+
+        renderer.render(scene, camera);
+
+        count += 0.1;
+
+    }
+</script>
 
 <script src="js/tuxsudo.min.js"></script>
 
@@ -911,7 +945,7 @@
 
         if (name == 'home') {
             homepage()
-            // $('.shouye').fadeIn(1000)
+                // $('.shouye').fadeIn(1000)
 
 
         } else if (name == 'shiming') {
@@ -1007,17 +1041,23 @@
         }
     }
 
-    function beginanimation(){
-        $(".tagline").letterfx({"fx":"fly-left fly-top spin","backwards":true,"letter_end":"stay","timing":120,'fx_duration':'2s'});
-        setTimeout(function(){
-            $(".tagline").css('visibility','hidden')
-            $('.logozhimu').fadeIn(1000)
-            $('.shouyeitem').addClass('shouyeitemopen')
-            $('.loadings').fadeOut(1600)
-        },1800)
-        // setTimeout(function(){
-        //     $('.loadings').fadeOut(100);
-        // })
+    function beginanimation() {
+        $(".tagline").letterfx({
+            "fx": "fly-left fly-top spin",
+            "backwards": true,
+            "letter_end": "stay",
+            "timing": 120,
+            'fx_duration': '2s'
+        });
+        setTimeout(function() {
+                $(".tagline").css('visibility', 'hidden')
+                $('.logozhimu').fadeIn(1000)
+                $('.shouyeitem').addClass('shouyeitemopen')
+                $('.loadings').fadeOut(1600)
+            }, 1800)
+            // setTimeout(function(){
+            //     $('.loadings').fadeOut(100);
+            // })
     }
 </script>
 
@@ -1025,33 +1065,33 @@
 
 <script>
     window.onload = function() {
-        setTimeout(function(){
+        setTimeout(function() {
             beginanimation();
-            
-        },600)
+
+        }, 600)
 
     }
 
-    function homepage(){
-        
-            $('.shiming').fadeOut(1000)
-            $('.wenhua').fadeOut(1000)
-            $('.yunying').fadeOut(1000)
-            $('.xinwen').fadeOut(1000)
-            $('.lianxi').fadeOut(1000)
-            $('.shouye').fadeIn(100)
+    function homepage() {
 
-            $('.loadings').css('display','flex')
-            
-            $(".tagline").css('visibility','visible')
-            $('.logozhimu').css('display','none')
-            $('.shouyeitem').removeClass('shouyeitemopen')
+        $('.shiming').fadeOut(1000)
+        $('.wenhua').fadeOut(1000)
+        $('.yunying').fadeOut(1000)
+        $('.xinwen').fadeOut(1000)
+        $('.lianxi').fadeOut(1000)
+        $('.shouye').fadeIn(100)
 
-            
-            setTimeout(function(){
+        $('.loadings').css('display', 'flex')
+
+        $(".tagline").css('visibility', 'visible')
+        $('.logozhimu').css('display', 'none')
+        $('.shouyeitem').removeClass('shouyeitemopen')
+
+
+        setTimeout(function() {
             beginanimation();
-            
-        },600)
+
+        }, 600)
     }
 </script>
 
